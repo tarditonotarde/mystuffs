@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Favicon Converter</title>
+</head>
+<body>
+  <h1>Converting favicon...</h1>
+  <canvas id="canvas" width="32" height="32"></canvas>
+  <script type="module">
+    // This is a temporary file to convert the Figma asset to a favicon
+    import faviconImg from 'figma:asset/5f70867bcb92d5f57ada0c513cbe0dcaa797ad04.png';
+    
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
+    
+    img.onload = function() {
+      ctx.drawImage(img, 0, 0, 32, 32);
+      
+      // Convert to data URL
+      canvas.toBlob(function(blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'favicon.png';
+        a.click();
+      });
+    };
+    
+    img.src = faviconImg;
+  </script>
+</body>
+</html>

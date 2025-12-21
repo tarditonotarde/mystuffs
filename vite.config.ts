@@ -25,7 +25,7 @@ function figmaAssetPlugin() {
 }
 
 export default defineConfig({
-  base: '/portfolio/', // Cambia 'portfolio' por el nombre de tu repositorio
+  base: '/mystuffs/', // Nombre del repositorio en GitHub
   plugins: [
     // The React and Tailwind plugins are both required for Make, even if
     // Tailwind is not being actively used – do not remove them
