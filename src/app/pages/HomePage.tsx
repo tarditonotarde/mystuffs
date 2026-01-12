@@ -1074,7 +1074,7 @@ export default function HomePage() {
         {/* Copyright */}
         <div className="py-[10px] text-center px-[0px] pt-[0px] pr-[0px] pb-[5px] pl-[0px]">
           <p className="font-['Instrument_Sans:Regular',sans-serif] font-normal text-[10px] tracking-[-0.3px] transition-colors duration-300" style={{ fontVariationSettings: "'wdth' 100", color: colors.gray }}>
-            © 2025 Claudia Tardito. All rights reserved.
+            © 2026 Claudia Tardito. All rights reserved.
           </p>
         </div>
       </div>
