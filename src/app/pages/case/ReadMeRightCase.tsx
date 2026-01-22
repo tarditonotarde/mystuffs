@@ -790,7 +790,7 @@ export default function ReadMeRightCase() {
                   className="font-['Instrument_Sans:Regular',sans-serif] text-[48px] text-black tracking-[-2.4px]"
                   style={{ fontVariationSettings: "'wdth' 100" }}
                 >
-                  ~95%
+                  ~ 95%
                 </p>
                 <p 
                   className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] mt-3"
@@ -805,7 +805,7 @@ export default function ReadMeRightCase() {
                   className="font-['Instrument_Sans:Regular',sans-serif] text-[48px] text-black tracking-[-2.4px]"
                   style={{ fontVariationSettings: "'wdth' 100" }}
                 >
-                  ~90s
+                  ~ 90s
                 </p>
                 <p 
                   className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] mt-3"
@@ -835,7 +835,7 @@ export default function ReadMeRightCase() {
                   className="font-['Instrument_Sans:Regular',sans-serif] text-[48px] text-black tracking-[-2.4px]"
                   style={{ fontVariationSettings: "'wdth' 100" }}
                 >
-                  98/100
+                  98 / 100
                 </p>
                 <p 
                   className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] mt-3"
@@ -850,7 +850,7 @@ export default function ReadMeRightCase() {
                   className="font-['Instrument_Sans:Regular',sans-serif] text-[48px] text-black tracking-[-2.4px]"
                   style={{ fontVariationSettings: "'wdth' 100" }}
                 >
-                  ~180KB
+                  ~ 180KB
                 </p>
                 <p 
                   className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] mt-3"
@@ -865,7 +865,7 @@ export default function ReadMeRightCase() {
                   className="font-['Instrument_Sans:Regular',sans-serif] text-[48px] text-black tracking-[-2.4px]"
                   style={{ fontVariationSettings: "'wdth' 100" }}
                 >
-                  {'<2%'}
+                  {'< 2%'}
                 </p>
                 <p 
                   className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] mt-3"
