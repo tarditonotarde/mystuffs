@@ -28,6 +28,7 @@ import UnoTarotCase from './pages/case/UnoTarotCase';
 import OfficeApocalypseCase from './pages/case/OfficeApocalypseCase';
 import HatersGonnaHateCase from './pages/case/HatersGonnaHateCase';
 import MeanBotCase from './pages/case/MeanBotCase';
+import ReadMeRightCase from './pages/case/ReadMeRightCase';
 import { ScrollToTop } from './components/ScrollToTop';
 import { MouseTrail } from './components/MouseTrail';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -68,6 +69,7 @@ export default function App() {
           <Route path="/case/office-apocalypse" element={<OfficeApocalypseCase />} />
           <Route path="/case/haters-gonna-hate" element={<HatersGonnaHateCase />} />
           <Route path="/case/mean-bot" element={<MeanBotCase />} />
+          <Route path="/case/read-me-right" element={<ReadMeRightCase />} />
         </Routes>
       </HashRouter>
     </ThemeProvider>

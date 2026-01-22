@@ -68,6 +68,7 @@ export default function WorksPage() {
     { id: 'Countify', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/countify.jpg?raw=true', categories: ['ux/ui'], className: 'w-[100px] h-[100px]' },
     { id: 'Uno Tarot', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/uno.gif?raw=true', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
     { id: 'Office Apocalypse', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/office.gif?raw=true', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
+    { id: 'Read Me Right!', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/readme.gif?raw=true', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
     { id: 'Hertaverse', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/hertaverse.gif?raw=true', categories: ['branding'], className: 'w-[100px] h-[100px]' },
     { id: 'Infamia Museum', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/infamia.gif?raw=true', categories: ['ux/ui'], className: 'w-[100px] h-[100px]' },
     { id: 'Haters gonna hate', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/hater.gif?raw=true', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
@@ -111,6 +112,7 @@ export default function WorksPage() {
     'Countify': svgPaths.p1da95340,
     'Uno Tarot': svgPaths.p2f537a00,
     'Office Apocalypse': svgPaths.p19ff1980,
+    'Read Me Right!': svgPaths.p19ff1980,
     'Hertaverse': svgPaths.p2c26bdc0,
     'Infamia Museum': svgPaths.p30b01d80,
     'Haters gonna hate': svgPaths.p35507900,
@@ -280,6 +282,7 @@ export default function WorksPage() {
       'Office Apocalypse': '/case/office-apocalypse',
       'Haters gonna hate': '/case/haters-gonna-hate',
       'Mean Bot': '/case/mean-bot',
+      'Read Me Right!': '/case/read-me-right',
       // Agregar más rutas aquí cuando estén disponibles
     };
 

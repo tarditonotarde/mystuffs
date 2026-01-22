@@ -27,6 +27,7 @@ export default function HomePage() {
   const [isFunnyMode, setIsFunnyMode] = useState(false);
   
   // Animation keys for each icon
+  const [readMeRightAnimKey, setReadMeRightAnimKey] = useState(0);
   const [monoBankAnimKey, setMonoBankAnimKey] = useState(0);
   const [beatBitsAnimKey, setBeatBitsAnimKey] = useState(0);
   const [chronoGoAnimKey, setChronoGoAnimKey] = useState(0);
@@ -56,6 +57,7 @@ export default function HomePage() {
 
   // Map project IDs to images
   const projectImages: { [key: string]: string } = {
+    'ux-4': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/readme.gif?raw=true',
     'ux-5': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/monobank.gif?raw=true',
     'ux-6': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/beatbits.gif?raw=true',
     'ux-7': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/chrono-go.gif?raw=true',
@@ -616,6 +618,35 @@ export default function HomePage() {
           >
             {/* Featured Projects - stacked vertically */}
             <motion.div className="w-fit flex flex-col gap-3" variants={containerVariants}>
+              {/* Read Me Right! */}
+              <motion.div 
+                className="flex items-center gap-4 cursor-pointer group"
+                onMouseEnter={() => {
+                  setReadMeRightAnimKey(prev => prev + 1);
+                  setHoveredProject('ux-4');
+                  generateRandomPosition();
+                }}
+                onMouseLeave={() => setHoveredProject(null)}
+                onClick={() => navigate('/case/read-me-right')}
+                variants={projectVariants}
+              >
+                <div className="w-[24px] h-[27px]">
+                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 28">
+                    <path 
+                      key={readMeRightAnimKey}
+                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
+                      d={svgPaths.p19ff1980} 
+                      stroke={colors.text}
+                      strokeLinecap="round" 
+                      strokeWidth="0.5" 
+                    />
+                  </svg>
+                </div>
+                <p className="text-[24px] tracking-[-0.72px] transition-colors group-hover:!text-[#8B8B8B]" style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontVariationSettings: "'wdth' 100", color: colors.text }}>
+                  Read Me Right!
+                </p>
+              </motion.div>
+
               {/* MonoBank */}
               <motion.div 
                 className="flex items-center gap-4 cursor-pointer group"
