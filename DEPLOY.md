@@ -348,3 +348,29 @@ git push -f origin main
 
 **Última actualización**: December 16, 2024  
 **Creado por**: Claudia Tardito
+
+# 1️⃣ Después de hacer cambios en Visual Studio Code
+# Guarda todos los archivos (Cmd+S o Ctrl+S)
+
+# 2️⃣ Navega a la carpeta del proyecto en Terminal
+cd ~/mystuffs
+
+# 3️⃣ Verifica que todo compile correctamente
+npm run build
+
+# 4️⃣ (OPCIONAL) Si quieres ver el sitio localmente antes de publicar
+npx serve dist
+# Abre http://localhost:3000 en tu navegador
+# Presiona Ctrl+C para cerrar el servidor cuando termines
+
+# 5️⃣ Publica los cambios a GitHub Pages
+npm run deploy
+
+# 6️⃣ Espera 2-3 minutos y visita:
+# https://tarditonotarde.github.io/mystuffs/
+
+# Si quieres limpiar todo y empezar de nuevo:
+rm -rf node_modules dist
+npm install
+npm run build
+npm run deploy

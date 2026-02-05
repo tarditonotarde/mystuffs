@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { useTheme } from '../contexts/ThemeContext';
 import svgPaths from "../../imports/svg-gazf6rc9gx";
+import svgPathsIcons from "../../imports/svg-0pgs1q9s8l";
 import svgPathsScribble from "../../imports/svg-8varu1tqqx";
 import svgPathsLanguage from "../../imports/svg-ptd9s8x07g";
 import svgPathsTheme from "../../imports/svg-u95vusejla";
@@ -13,6 +14,76 @@ import imgUx5 from "figma:asset/47a3b0cc3f987ef875ceab353bd5ec75ee5ae161.png";
 import imgUx6 from "figma:asset/b4441c3600013e07688cb85f41936971a26b00fc.png";
 import imgUx7 from "figma:asset/493b08cb1dfdf4b7f3560a1360210a8d41dcd463.png";
 import imgUx8 from "figma:asset/47ef43ef8f975472b72131b51e4d0a3f4b1a6432.png";
+
+// Translations object
+const translations = {
+  EN: {
+    greeting: "👋 Hey! I'm Claudia Tardito,",
+    subtitle1: "a product designer.",
+    subtitle2: "Welcome to my playgrounds…",
+    subtitle3: "and yes, the occasional",
+    greetingFunny: "💀 Sup. I'm Claudia Tardito,",
+    subtitle1Funny: "a product designer.",
+    subtitle2Funny: "Welcome to my therapy sessions…",
+    subtitle3Funny: "I mean, the occasional",
+    wordsFunny: ['disaster.', 'existential crisis.', 'procrastination.', 'imposter syndrome.', 'anxiety.', 'overthinking.', 'caffeine addiction.', 'burnout.', 'self-doubt.', 'panic.', 'stress.'],
+    wordsNormal: ['mess.', 'experiments.', 'chaos.', 'magic.', 'mistakes.', 'fun.', 'spark.', 'madness.', 'coffee.', 'inspiration.', 'wonder.'],
+    myWork: "my work",
+    seeMore: "see more stuffs",
+    itsMe: "it's me",
+    itsmeIntro: "👋 Hi! I'm Claudia Tardito, a designer, researcher, and visual storyteller with a background in Art & Design and a Master's in Editorial Design.",
+    itsmeBody: "With 10+ years of experience in branding, culture, and community, I now focus on UX/UI design, front-end development, and AI-driven applications — blending creativity, tech, and research to craft intuitive experiences.",
+    itsmeEnd: "I love design",
+    itsmeIntroFunny: "😬 So... I'm Claudia Tardito, a \"designer\" who somehow convinced people I know what I'm doing. Still have no idea how that happened.",
+    itsmeBodyFunny: "With 10+ years of faking it till I make it, I now specialize in questioning every design decision, refreshing Figma obsessively, and pretending I understand AI — while crying internally over user feedback.",
+    itsmeEndFunny: "I create design",
+    itsmeWordsFunny: ['that nobody asked for.', 'that makes no sense.', 'to pay the bills.', 'because I have no choice.', 'to survive.'],
+    itsmeWordsNormal: ['with purpose.', 'with intention.', 'that matters.', 'that makes sense.', 'with impact.'],
+    myResume: "my resume",
+    contact: "contact",
+    menuHey: "hey!",
+    menuMyWork: "my work",
+    menuMoreStuffs: "more stuffs",
+    menuItsMe: "it's me",
+    menuContact: "contact",
+    spotify: "spotify",
+    linkedin: "linkedin",
+    instagram: "instagram"
+  },
+  ES: {
+    greeting: "👋 ¡Hola! Soy Claudia Tardito,",
+    subtitle1: "diseñadora de producto.",
+    subtitle2: "Bienvenida/o a mis experimentos…",
+    subtitle3: "y sí, ocasional",
+    greetingFunny: "💀 Hola. Soy Claudia Tardito,",
+    subtitle1Funny: "diseñadora de producto.",
+    subtitle2Funny: "Bienvenida/o a mi realidad paralela…",
+    subtitle3Funny: "Quiero decir, ocasional",
+    wordsFunny: ['desastre.', 'crisis existencial.', 'procrastinación.', 'síndrome del impostor.', 'ansiedad.', 'sobrepensamiento.', 'adicción a la cafeína.', 'agotamiento.', 'duda personal.', 'pánico.', 'estrés.'],
+    wordsNormal: ['desorden.', 'experimento.', 'caos.', 'magia.', 'error.', 'diversión.', 'chispa.', 'locura.', 'café.', 'inspiración.', 'asombro.'],
+    myWork: "mi trabajo",
+    seeMore: "ver más cosas",
+    itsMe: "soy yo",
+    itsmeIntro: "👋 ¡Hola! Soy Claudia Tardito, diseñadora, investigadora y narradora visual con formación en Arte & Diseño y un Máster en Diseño Editorial.",
+    itsmeBody: "Con más de 10 años de experiencia en branding, cultura y comunidad, ahora me enfoco en diseño UX/UI, desarrollo front-end y aplicaciones impulsadas por IA — combinando creatividad, tecnología e investigación para crear experiencias intuitivas.",
+    itsmeEnd: "Amo el diseño",
+    itsmeIntroFunny: "😬 Bueno... Soy Claudia Tardito, una \"diseñadora\" que de alguna manera convenció a la gente de que sé lo que hago. Todavía no sé cómo pasó eso.",
+    itsmeBodyFunny: "Con más de 10 años fingiendo hasta lograrlo, ahora me especializo en cuestionar cada decisión de diseño, actualizar Figma obsesivamente y fingir que entiendo la IA — mientras lloro internamente por el feedback de usuarios.",
+    itsmeEndFunny: "Creo diseño",
+    itsmeWordsFunny: ['que nadie pidió.', 'que no tiene sentido.', 'para pagar las cuentas.', 'porque no tengo opción.', 'para sobrevivir.'],
+    itsmeWordsNormal: ['con propósito.', 'con intención.', 'que importa.', 'que tiene sentido.', 'con impacto.'],
+    myResume: "mi cv",
+    contact: "contacto",
+    menuHey: "hey!",
+    menuMyWork: "mi trabajo",
+    menuMoreStuffs: "más cosas",
+    menuItsMe: "soy yo",
+    menuContact: "contacto",
+    spotify: "spotify",
+    linkedin: "linkedin",
+    instagram: "instagram"
+  }
+};
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -25,6 +96,7 @@ export default function HomePage() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [backToTopAnimKey, setBackToTopAnimKey] = useState(0);
   const [isFunnyMode, setIsFunnyMode] = useState(false);
+  const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
   
   // Animation keys for each icon
   const [readMeRightAnimKey, setReadMeRightAnimKey] = useState(0);
@@ -39,21 +111,20 @@ export default function HomePage() {
   const [contactInstagramAnimKey, setContactInstagramAnimKey] = useState(0);
   const [contactResumeAnimKey, setContactResumeAnimKey] = useState(0);
 
+  // Get current translations
+  const t = translations[language];
+  const words = isFunnyMode ? t.wordsFunny : t.wordsNormal;
+  const itsmeWords = isFunnyMode ? t.itsmeWordsFunny : t.itsmeWordsNormal;
+
   // Typewriter animation state for hero
   const [currentText, setCurrentText] = useState('');
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const words = isFunnyMode 
-    ? ['disaster.', 'existential crisis.', 'procrastination.', 'imposter syndrome.', 'anxiety.', 'overthinking.', 'caffeine addiction.', 'burnout.', 'self-doubt.', 'panic.', 'stress.']
-    : ['mess.', 'experiments.', 'chaos.', 'magic.', 'mistakes.', 'fun.', 'spark.', 'madness.', 'coffee.', 'inspiration.', 'wonder.'];
 
   // Typewriter animation state for "it's me"
   const [itsmeText, setItsmeText] = useState('');
   const [itsmeWordIndex, setItsmeWordIndex] = useState(0);
   const [itsmeIsDeleting, setItsmeIsDeleting] = useState(false);
-  const itsmeWords = isFunnyMode
-    ? ['that nobody asked for.', 'that makes no sense.', 'to pay the bills.', 'because I have no choice.', 'to survive.']
-    : ['with purpose.', 'with intention.', 'that matters.', 'that makes sense.', 'with impact.'];
 
   // Map project IDs to images
   const projectImages: { [key: string]: string } = {
@@ -205,7 +276,7 @@ export default function HomePage() {
     }, isDeleting ? 50 : 100); // Borrar más rápido que escribir
     
     return () => clearTimeout(timeout);
-  }, [currentText, isDeleting, wordIndex]);
+  }, [currentText, isDeleting, wordIndex, words]);
 
   // Typing animation for "it's me" section
   useEffect(() => {
@@ -233,7 +304,7 @@ export default function HomePage() {
     }, itsmeIsDeleting ? 50 : 100);
     
     return () => clearTimeout(timeout);
-  }, [itsmeText, itsmeIsDeleting, itsmeWordIndex]);
+  }, [itsmeText, itsmeIsDeleting, itsmeWordIndex, itsmeWords]);
 
   // Detectar scroll para cambiar el botón de menú
   useEffect(() => {
@@ -252,7 +323,7 @@ export default function HomePage() {
   // Detectar scroll para mostrar el botón de volver al inicio
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 500) {
+      if (window.scrollY > 300) {
         setShowBackToTop(true);
       } else {
         setShowBackToTop(false);
@@ -270,8 +341,8 @@ export default function HomePage() {
         
         {/* Hero Section */}
         <section className="py-12 md:py-20 relative min-h-[85vh] max-h-[85vh] flex items-center justify-end">
-          {/* Header Icons - positioned at top left */}
-          <div className="absolute top-0 left-0 flex items-center gap-4 pt-4">
+          {/* Header Icons - Fixed sticky position at top left */}
+          <div className="fixed top-4 left-6 md:left-12 lg:left-16 flex items-center gap-4 z-50">
             {/* Theme Toggle Icon */}
             <button 
               className="w-[36px] h-[36px] transition-colors [&_path]:hover:fill-[#8B8B8B]"
@@ -317,6 +388,22 @@ export default function HomePage() {
                 <path clipRule="evenodd" d={isFunnyMode ? svgPathsDevil.p3a986080 : svgPathsSmile.p3335a500} fill={colors.text} fillRule="evenodd" className="transition-colors" />
               </svg>
             </button>
+
+            {/* Language Toggle Button */}
+            <div className="flex items-center gap-2">
+              <button
+                className="text-[14px] tracking-[-0.42px] transition-colors hover:!text-[#8B8B8B]"
+                style={{ 
+                  fontFamily: 'Instrument Sans, sans-serif',
+                  fontVariationSettings: "'wdth' 100",
+                  color: colors.text
+                }}
+                onClick={() => setLanguage(language === 'EN' ? 'ES' : 'EN')}
+                aria-label={language === 'EN' ? 'Cambiar a Español' : 'Switch to English'}
+              >
+                {language === 'EN' ? 'ES' : 'EN'}
+              </button>
+            </div>
           </div>
 
           {/* Intro text - positioned at bottom left */}
@@ -324,17 +411,17 @@ export default function HomePage() {
             <div className="leading-[1.1] text-[28px] md:text-[36px] lg:text-[48px] tracking-[-2.4px] transition-colors" style={{ fontFamily: 'Instrument Sans, sans-serif', fontVariationSettings: "'wdth' 100", color: colors.text }}>
               {isFunnyMode ? (
                 <>
-                  <p className="mb-0">{`💀 Sup. I'm Claudia Tardito,`}</p>
-                  <p className="mb-0">a product designer.</p>
-                  <p className="mb-0">{`Welcome to my therapy sessions… `}</p>
-                  <p>I mean, the occasional <span className="inline-block">{currentText}<span className="inline-block w-[2px] h-[1em] ml-[2px] align-middle" style={{ animation: 'blink 1s step-end infinite', backgroundColor: theme === 'dark' ? '#FFFFFF' : colors.text }}></span></span></p>
+                  <p className="mb-0">{t.greetingFunny}</p>
+                  <p className="mb-0">{t.subtitle1Funny}</p>
+                  <p className="mb-0">{t.subtitle2Funny}</p>
+                  <p>{t.subtitle3Funny} <span className="inline-block">{currentText}<span className="inline-block w-[2px] h-[1em] ml-[2px] align-middle" style={{ animation: 'blink 1s step-end infinite', backgroundColor: theme === 'dark' ? '#FFFFFF' : colors.text }}></span></span></p>
                 </>
               ) : (
                 <>
-                  <p className="mb-0">{`👋 Hey! I'm Claudia Tardito,`}</p>
-                  <p className="mb-0">a product designer.</p>
-                  <p className="mb-0">{`Welcome to my playgrounds… `}</p>
-                  <p>and yes, the occasional <span className="inline-block">{currentText}<span className="inline-block w-[2px] h-[1em] ml-[2px] align-middle" style={{ animation: 'blink 1s step-end infinite', backgroundColor: theme === 'dark' ? '#FFFFFF' : colors.text }}></span></span></p>
+                  <p className="mb-0">{t.greeting}</p>
+                  <p className="mb-0">{t.subtitle1}</p>
+                  <p className="mb-0">{t.subtitle2}</p>
+                  <p>{t.subtitle3} <span className="inline-block">{currentText}<span className="inline-block w-[2px] h-[1em] ml-[2px] align-middle" style={{ animation: 'blink 1s step-end infinite', backgroundColor: theme === 'dark' ? '#FFFFFF' : colors.text }}></span></span></p>
                 </>
               )}
             </div>
@@ -415,13 +502,13 @@ export default function HomePage() {
                       e.currentTarget.style.color = colors.text;
                     }}
                   >
-                    hey!
+                    {t.menuHey}
                   </button>
                   <button
                     onClick={() => {
                       const sections = document.querySelectorAll('section');
                       const myWorkSection = Array.from(sections).find(section => 
-                        section.querySelector('h2')?.textContent === 'my work'
+                        section.querySelector('h2')?.textContent === t.myWork
                       );
                       myWorkSection?.scrollIntoView({ behavior: 'smooth' });
                     }}
@@ -443,7 +530,7 @@ export default function HomePage() {
                       e.currentTarget.style.color = colors.text;
                     }}
                   >
-                    my work
+                    {t.menuMyWork}
                   </button>
                   <button
                     onClick={() => {
@@ -467,13 +554,13 @@ export default function HomePage() {
                       e.currentTarget.style.color = colors.text;
                     }}
                   >
-                    more stuffs
+                    {t.menuMoreStuffs}
                   </button>
                   <button
                     onClick={() => {
                       const sections = document.querySelectorAll('section');
                       const itsMeSection = Array.from(sections).find(section => 
-                        section.querySelector('h2')?.textContent === "it's me"
+                        section.querySelector('h2')?.textContent === t.itsMe
                       );
                       itsMeSection?.scrollIntoView({ behavior: 'smooth' });
                     }}
@@ -495,13 +582,13 @@ export default function HomePage() {
                       e.currentTarget.style.color = colors.text;
                     }}
                   >
-                    it's me
+                    {t.menuItsMe}
                   </button>
                   <button
                     onClick={() => {
                       const sections = document.querySelectorAll('section');
                       const contactSection = Array.from(sections).find(section => 
-                        section.querySelector('h2')?.textContent === 'contact'
+                        section.querySelector('h2')?.textContent === t.contact
                       );
                       contactSection?.scrollIntoView({ behavior: 'smooth' });
                     }}
@@ -520,7 +607,7 @@ export default function HomePage() {
                       e.currentTarget.style.color = colors.text;
                     }}
                   >
-                    contact
+                    {t.menuContact}
                   </button>
                 </div>
               </div>
@@ -589,7 +676,7 @@ export default function HomePage() {
               style={{ fontFamily: 'Instrument Sans, sans-serif', fontVariationSettings: "'wdth' 100", color: colors.text }}
               variants={itemVariants}
             >
-              my work
+              {t.myWork}
             </motion.h2>
           </motion.div>
 
@@ -659,12 +746,12 @@ export default function HomePage() {
                 onClick={() => navigate('/case/monobank')}
                 variants={projectVariants}
               >
-                <div className="w-[24px] h-[29px]">
-                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 23 30">
+                <div className="w-[24px] h-[20px]">
+                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 21">
                     <path 
                       key={monoBankAnimKey}
                       className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPaths.p2f537a00} 
+                      d={svgPathsIcons.p35507900} 
                       stroke={colors.text}
                       strokeLinecap="round" 
                       strokeWidth="0.5" 
@@ -688,12 +775,12 @@ export default function HomePage() {
                 onClick={() => navigate('/case/beatbits')}
                 variants={projectVariants}
               >
-                <div className="w-[24px] h-[20px]">
-                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 21">
+                <div className="w-[24px] h-[22px]">
+                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 23">
                     <path 
                       key={beatBitsAnimKey}
                       className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPaths.p1da95340} 
+                      d={svgPathsIcons.p2c26bdc0} 
                       stroke={colors.text}
                       strokeLinecap="round" 
                       strokeWidth="0.5" 
@@ -717,12 +804,12 @@ export default function HomePage() {
                 onClick={() => navigate('/case/chronogo')}
                 variants={projectVariants}
               >
-                <div className="w-[24px] h-[27px]">
-                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 28">
+                <div className="w-[24px] h-[23px]">
+                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 24">
                     <path 
                       key={chronoGoAnimKey}
                       className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPaths.p19ff1980} 
+                      d={svgPathsIcons.p30b01d80} 
                       stroke={colors.text}
                       strokeLinecap="round" 
                       strokeWidth="0.5" 
@@ -746,12 +833,12 @@ export default function HomePage() {
                 onClick={() => navigate('/case/herta-security')}
                 variants={projectVariants}
               >
-                <div className="w-[24px] h-[20px]">
-                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 21">
+                <div className="w-[24px] h-[24px]">
+                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 25">
                     <path 
                       key={hertaAnimKey}
                       className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPaths.p35507900} 
+                      d={svgPathsIcons.p1da95340} 
                       stroke={colors.text}
                       strokeLinecap="round" 
                       strokeWidth="0.5" 
@@ -771,7 +858,7 @@ export default function HomePage() {
                 variants={buttonVariants}
               >
                 <p className="text-[24px] tracking-[-0.72px] transition-colors group-hover:!text-[#8B8B8B]" style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 500, fontVariationSettings: "'wdth' 100", color: colors.text }}>
-                  see more stuffs
+                  {t.seeMore}
                 </p>
                 <div className="w-[52px] h-[52px] transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-translate-x-2 group-hover:rotate-90">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 53 53">
@@ -822,7 +909,7 @@ export default function HomePage() {
               style={{ fontVariationSettings: "'wdth' 100", color: colors.text }}
               variants={itemVariants}
             >
-              it's me
+              {t.itsMe}
             </motion.h2>
           </motion.div>
 
@@ -845,15 +932,15 @@ export default function HomePage() {
               <div className="font-['Instrument_Sans:Regular',sans-serif] font-normal text-[24px] tracking-[-1.2px] leading-[1.1] transition-colors duration-300" style={{ fontVariationSettings: "'wdth' 100", color: colors.text }}>
                 {isFunnyMode ? (
                   <>
-                    <p className="mb-0">{`😬 So... I'm Claudia Tardito, a "designer" who somehow convinced people I know what I'm doing. Still have no idea how that happened.`}</p>
-                    <p className="mb-0">With 10+ years of faking it till I make it, I now specialize in questioning every design decision, refreshing Figma obsessively, and pretending I understand AI — while crying internally over user feedback.</p>
-                    <p>I create design <span className="inline-block">{itsmeText}<span className="inline-block w-[2px] h-[1em] ml-[2px] align-middle transition-colors duration-300" style={{ animation: 'blink 1s step-end infinite', backgroundColor: theme === 'dark' ? '#FFFFFF' : colors.text }}></span></span></p>
+                    <p className="mb-0">{t.itsmeIntroFunny}</p>
+                    <p className="mb-0">{t.itsmeBodyFunny}</p>
+                    <p>{t.itsmeEndFunny} <span className="inline-block">{itsmeText}<span className="inline-block w-[2px] h-[1em] ml-[2px] align-middle transition-colors duration-300" style={{ animation: 'blink 1s step-end infinite', backgroundColor: theme === 'dark' ? '#FFFFFF' : colors.text }}></span></span></p>
                   </>
                 ) : (
                   <>
-                    <p className="mb-0">{`👋 Hi! I'm Claudia Tardito, a designer, researcher, and visual storyteller with a background in Art & Design and a Master's in Editorial Design.`}</p>
-                    <p className="mb-0">With 10+ years of experience in branding, culture, and community, I now focus on UX/UI design, front-end development, and AI-driven applications — blending creativity, tech, and research to craft intuitive experiences.</p>
-                    <p>I love design <span className="inline-block">{itsmeText}<span className="inline-block w-[2px] h-[1em] ml-[2px] align-middle transition-colors duration-300" style={{ animation: 'blink 1s step-end infinite', backgroundColor: theme === 'dark' ? '#FFFFFF' : colors.text }}></span></span></p>
+                    <p className="mb-0">{t.itsmeIntro}</p>
+                    <p className="mb-0">{t.itsmeBody}</p>
+                    <p>{t.itsmeEnd} <span className="inline-block">{itsmeText}<span className="inline-block w-[2px] h-[1em] ml-[2px] align-middle transition-colors duration-300" style={{ animation: 'blink 1s step-end infinite', backgroundColor: theme === 'dark' ? '#FFFFFF' : colors.text }}></span></span></p>
                   </>
                 )}
               </div>
@@ -867,7 +954,7 @@ export default function HomePage() {
                 variants={buttonVariants}
               >
                 <p className="font-['Instrument_Sans:Medium',sans-serif] font-medium text-[24px] tracking-[-0.72px] transition-colors" style={{ fontVariationSettings: "'wdth' 100" }}>
-                  <span className="group-hover:!text-[#8B8B8B] transition-colors" style={{ color: colors.text }}>my resume</span>
+                  <span className="group-hover:!text-[#8B8B8B] transition-colors" style={{ color: colors.text }}>{t.myResume}</span>
                 </p>
                 <div className="w-[52px] h-[52px] transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-translate-x-2 group-hover:rotate-90">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 53 53">
@@ -934,7 +1021,7 @@ export default function HomePage() {
               style={{ fontVariationSettings: "'wdth' 100", color: colors.text }}
               variants={itemVariants}
             >
-              contact
+              {t.contact}
             </motion.h2>
           </motion.div>
 
@@ -968,7 +1055,7 @@ export default function HomePage() {
                   variants={socialButtonVariants}
                 >
                   <p className="font-['Instrument_Sans:Medium',sans-serif] font-medium text-[24px] tracking-[-0.72px] transition-colors" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    <span className="group-hover:!text-[#8B8B8B] transition-colors" style={{ color: colors.text }}>spotify</span>
+                    <span className="group-hover:!text-[#8B8B8B] transition-colors" style={{ color: colors.text }}>{t.spotify}</span>
                   </p>
                   <div className="w-[52px] h-[52px] transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-translate-x-2 group-hover:rotate-90">
                     <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 53 53">
@@ -1000,7 +1087,7 @@ export default function HomePage() {
                   variants={socialButtonVariants}
                 >
                   <p className="font-['Instrument_Sans:Medium',sans-serif] font-medium text-[24px] tracking-[-0.72px] transition-colors" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    <span className="group-hover:!text-[#8B8B8B] transition-colors" style={{ color: colors.text }}>linkedin</span>
+                    <span className="group-hover:!text-[#8B8B8B] transition-colors" style={{ color: colors.text }}>{t.linkedin}</span>
                   </p>
                   <div className="w-[52px] h-[52px] transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-translate-x-2 group-hover:rotate-90">
                     <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 53 53">
@@ -1032,7 +1119,7 @@ export default function HomePage() {
                   variants={socialButtonVariants}
                 >
                   <p className="font-['Instrument_Sans:Medium',sans-serif] font-medium text-[24px] tracking-[-0.72px] transition-colors" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    <span className="group-hover:!text-[#8B8B8B] transition-colors" style={{ color: colors.text }}>instagram</span>
+                    <span className="group-hover:!text-[#8B8B8B] transition-colors" style={{ color: colors.text }}>{t.instagram}</span>
                   </p>
                   <div className="w-[52px] h-[52px] transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-translate-x-2 group-hover:rotate-90">
                     <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 53 53">
@@ -1064,7 +1151,7 @@ export default function HomePage() {
                   variants={socialButtonVariants}
                 >
                   <p className="font-['Instrument_Sans:Medium',sans-serif] font-medium text-[24px] tracking-[-0.72px] transition-colors" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    <span className="group-hover:!text-[#8B8B8B] transition-colors" style={{ color: colors.text }}>my resume</span>
+                    <span className="group-hover:!text-[#8B8B8B] transition-colors" style={{ color: colors.text }}>{t.myResume}</span>
                   </p>
                   <div className="w-[52px] h-[52px] transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-translate-x-2 group-hover:rotate-90">
                     <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 53 53">
@@ -1101,22 +1188,27 @@ export default function HomePage() {
           viewport={{ once: true, amount: 0.2 }}
           variants={dividerVariants}
         />
-        
-        {/* Copyright */}
-        <div className="py-[10px] text-center px-[0px] pt-[0px] pr-[0px] pb-[5px] pl-[0px]">
-          <p className="font-['Instrument_Sans:Regular',sans-serif] font-normal text-[10px] tracking-[-0.3px] transition-colors duration-300" style={{ fontVariationSettings: "'wdth' 100", color: colors.gray }}>
+
+        {/* Footer */}
+        <footer className="p-[0px] text-center">
+          <p className="font-['Instrument_Sans:Light',sans-serif] text-[10px] tracking-[-0.42px] transition-colors duration-300" style={{ fontVariationSettings: "'wdth' 100", color: colors.text }}>
             © 2026 Claudia Tardito. All rights reserved.
           </p>
-        </div>
+        </footer>
       </div>
 
       {/* Back to Top Button */}
       {showBackToTop && (
         <button
-          className="fixed bottom-8 right-8 md:bottom-12 md:right-12 z-50 w-[32px] h-[32px] rounded-full shadow-lg cursor-pointer transition-all hover:opacity-70 group"
-          style={{ backgroundColor: colors.text }}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }}
           onMouseEnter={() => setBackToTopAnimKey(prev => prev + 1)}
+          className="fixed bottom-8 right-6 md:right-12 lg:right-16 w-[32px] h-[32px] z-50 rounded-full shadow-lg cursor-pointer transition-all hover:opacity-70 group"
+          style={{ backgroundColor: colors.text }}
           aria-label="Back to top"
         >
           <div className="w-full h-full flex items-center justify-center -rotate-90">
