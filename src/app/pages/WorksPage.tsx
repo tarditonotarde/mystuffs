@@ -529,7 +529,11 @@ export default function WorksPage() {
             {/* Botón para cambiar a modo carousel */}
             <button
               onClick={() => setIsCarouselMode(!isCarouselMode)}
-              className="w-[18px] h-[18px] flex items-center justify-center transition-colors group flex-shrink-0"
+              className="w-[32px] h-[32px] rounded-full flex items-center justify-center transition-colors group flex-shrink-0"
+              style={{ 
+                border: `1px solid ${colors.text}`,
+                backgroundColor: 'transparent'
+              }}
               aria-label="Toggle carousel mode"
             >
               {isCarouselMode ? (
@@ -539,39 +543,41 @@ export default function WorksPage() {
               )}
             </button>
             
-            <div className="flex-shrink-0 leading-none">
-              <Heading level={2}>
-                {selectedCategory === 'all' ? 'everything' : selectedCategory}
-              </Heading>
-            </div>
-            
-            {/* Mostrar nombre del proyecto en hover O cuando se está arrastrando */}
-            {(() => {
-              const displayedWork = hoveredWork || (draggedImage !== null ? filteredWorks[draggedImage]?.id : null);
+            <div className="flex items-center gap-3 flex-1">
+              <div className="flex-shrink-0 leading-none">
+                <Heading level={2}>
+                  {selectedCategory === 'all' ? 'everything' : selectedCategory}
+                </Heading>
+              </div>
               
-              return displayedWork && (
-                <div className="flex items-center gap-3">
-                  {/* Icono rallado animado diferente por proyecto */}
-                  <div className="w-[24px] h-[24px] flex items-center justify-center flex-shrink-0">
-                    <svg className="block w-full h-full" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 25 23">
-                      <path 
-                        key={displayedWork} 
-                        className="animated-scribble-hover" 
-                        d={projectIcons[displayedWork]} 
-                        stroke={colors.text}
-                        strokeLinecap="round" 
-                        strokeWidth="0.5" 
-                      />
-                    </svg>
+              {/* Mostrar nombre del proyecto en hover O cuando se está arrastrando */}
+              {(() => {
+                const displayedWork = hoveredWork || (draggedImage !== null ? filteredWorks[draggedImage]?.id : null);
+                
+                return displayedWork && (
+                  <div className="flex items-center gap-3">
+                    {/* Icono rallado animado diferente por proyecto */}
+                    <div className="w-[24px] h-[24px] flex items-center justify-center flex-shrink-0">
+                      <svg className="block w-full h-full" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 25 23">
+                        <path 
+                          key={displayedWork} 
+                          className="animated-scribble-hover" 
+                          d={projectIcons[displayedWork]} 
+                          stroke={colors.text}
+                          strokeLinecap="round" 
+                          strokeWidth="0.5" 
+                        />
+                      </svg>
+                    </div>
+                    
+                    {/* Nombre del proyecto */}
+                    <div className="text-[18px] md:text-[24px] tracking-[-0.72px] transition-colors duration-300 flex-shrink-0 leading-none" style={{ fontFamily: 'Instrument Sans, sans-serif', color: colors.text }}>
+                      {getDisplayName(displayedWork)}
+                    </div>
                   </div>
-                  
-                  {/* Nombre del proyecto */}
-                  <div className="text-[18px] md:text-[24px] tracking-[-0.72px] transition-colors duration-300 flex-shrink-0 leading-none" style={{ fontFamily: 'Instrument Sans, sans-serif', color: colors.text }}>
-                    {getDisplayName(displayedWork)}
-                  </div>
-                </div>
-              );
-            })()}
+                );
+              })()}
+            </div>
           </div>
 
           {/* Contenedor de imágenes - Modo Floating vs Carousel */}
@@ -582,7 +588,7 @@ export default function WorksPage() {
                 {filteredWorks.map((work, index) => (
                   <div
                     key={work.id}
-                    className="flex-shrink-0 w-[50px] h-[50px] hover:scale-110 transition-transform duration-300 cursor-pointer"
+                    className="flex-shrink-0 w-[100px] h-[100px] hover:scale-110 transition-transform duration-300 cursor-pointer"
                     onMouseEnter={() => setHoveredWork(work.id)}
                     onMouseLeave={() => setHoveredWork(null)}
                     onClick={() => handleImageClick(work.id)}
@@ -590,6 +596,10 @@ export default function WorksPage() {
                     <img
                       src={work.image}
                       alt={work.id}
+                      width={100}
+                      height={100}
+                      loading={index < 6 ? "eager" : "lazy"}
+                      decoding="async"
                       className="w-full h-full object-cover pointer-events-none select-none"
                     />
                   </div>
@@ -600,7 +610,7 @@ export default function WorksPage() {
               filteredWorks.map((work, index) => (
                 <div
                   key={work.id}
-                  className={`absolute ${selectedCategory === 'all' ? 'w-[50px] h-[50px]' : 'w-[100px] h-[100px]'} hover:scale-110 hover:z-10 ${draggedImage === index ? 'cursor-grabbing scale-110 z-20' : 'cursor-grab'} ${draggedImage === index ? '' : 'transition-all duration-500'}`}
+                  className={`absolute w-[100px] h-[100px] hover:scale-110 hover:z-10 ${draggedImage === index ? 'cursor-grabbing scale-110 z-20' : 'cursor-grab'} ${draggedImage === index ? '' : 'transition-all duration-500'}`}
                   style={{
                     top: imagePositions[index]?.top || '0%',
                     left: imagePositions[index]?.left || '0%',
@@ -614,6 +624,10 @@ export default function WorksPage() {
                   <img
                     src={work.image}
                     alt={work.id}
+                    width={100}
+                    height={100}
+                    loading={index < 10 ? "eager" : "lazy"}
+                    decoding="async"
                     className="w-full h-full object-cover pointer-events-none select-none"
                   />
                 </div>

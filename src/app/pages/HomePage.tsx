@@ -137,14 +137,14 @@ export default function HomePage() {
     'ux-8': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/herta.gif?raw=true',
   };
 
-  // Animation variants
+  // Animation variants - OPTIMIZED FOR PERFORMANCE
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.4,
-        staggerChildren: 0.15
+        duration: 0.2,
+        staggerChildren: 0.05
       }
     }
   };
@@ -152,13 +152,13 @@ export default function HomePage() {
   const sectionVariants = {
     hidden: { 
       opacity: 0, 
-      y: 40
+      y: 20
     },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.7,
+        duration: 0.35,
         ease: [0.25, 0.1, 0.25, 1]
       }
     }
@@ -167,13 +167,13 @@ export default function HomePage() {
   const itemVariants = {
     hidden: { 
       opacity: 0, 
-      y: 30
+      y: 10
     },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.25,
         ease: [0.25, 0.1, 0.25, 1]
       }
     }
@@ -182,13 +182,13 @@ export default function HomePage() {
   const projectVariants = {
     hidden: { 
       opacity: 0, 
-      x: -40
+      x: -15
     },
     visible: { 
       opacity: 1, 
       x: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.25,
         ease: [0.25, 0.1, 0.25, 1]
       }
     }
@@ -197,13 +197,13 @@ export default function HomePage() {
   const buttonVariants = {
     hidden: { 
       opacity: 0, 
-      scale: 0.9
+      scale: 0.95
     },
     visible: { 
       opacity: 1, 
       scale: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: [0.34, 1.56, 0.64, 1]
       }
     }
@@ -212,13 +212,13 @@ export default function HomePage() {
   const socialButtonVariants = {
     hidden: { 
       opacity: 0, 
-      x: 30
+      x: 15
     },
     visible: { 
       opacity: 1, 
       x: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.25,
         ease: [0.25, 0.1, 0.25, 1]
       }
     }
@@ -231,7 +231,7 @@ export default function HomePage() {
     visible: { 
       scaleX: 1,
       transition: {
-        duration: 0.8,
+        duration: 0.4,
         ease: [0.25, 0.1, 0.25, 1]
       }
     }
@@ -660,7 +660,7 @@ export default function HomePage() {
           style={{ backgroundColor: colors.text }}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={dividerVariants}
         />
 
@@ -669,7 +669,7 @@ export default function HomePage() {
           className="min-h-[85vh] max-h-[85vh] flex flex-col justify-between relative p-[0px]"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={sectionVariants}
         >
           <motion.div variants={containerVariants}>
@@ -724,7 +724,7 @@ export default function HomePage() {
                     <path 
                       key={breakTheFrameAnimKey}
                       className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPathsIcons.p1da95340} 
+                      d={svgPaths.p19ff1980} 
                       stroke={colors.text}
                       strokeLinecap="round" 
                       strokeWidth="0.5" 
@@ -922,7 +922,7 @@ export default function HomePage() {
           style={{ backgroundColor: colors.text }}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={dividerVariants}
         />
 
@@ -931,7 +931,7 @@ export default function HomePage() {
           className="min-h-[85vh] max-h-[85vh] flex flex-col justify-between p-[0px]"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={sectionVariants}
         >
           <motion.div variants={containerVariants}>
@@ -1034,7 +1034,7 @@ export default function HomePage() {
           style={{ backgroundColor: colors.text }}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={dividerVariants}
         />
 
@@ -1043,7 +1043,7 @@ export default function HomePage() {
           className="min-h-[85vh] max-h-[85vh] p-[0px] flex flex-col justify-between"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={sectionVariants}
         >
           <motion.div variants={containerVariants}>
@@ -1216,7 +1216,7 @@ export default function HomePage() {
           style={{ backgroundColor: colors.text }}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={dividerVariants}
         />
 
