@@ -724,7 +724,7 @@ export default function HomePage() {
                     <path 
                       key={breakTheFrameAnimKey}
                       className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPaths.p19ff1980} 
+                      d={svgPathsIcons.p1da95340} 
                       stroke={colors.text}
                       strokeLinecap="round" 
                       strokeWidth="0.5" 
