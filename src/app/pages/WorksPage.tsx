@@ -69,6 +69,7 @@ export default function WorksPage() {
     { id: 'Uno Tarot', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/uno.gif?raw=true', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
     { id: 'Office Apocalypse', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/office.gif?raw=true', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
     { id: 'Read Me Right!', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/readme.gif?raw=true', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
+    { id: 'LynchUniverse', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/lynch.gif?raw=true', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
     { id: 'Break the Frame', image: 'https://raw.githubusercontent.com/tarditonotarde/IMAGES_REPO/refs/heads/main/public/assets/IMAGES/MAIN-PORT/break.gif', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
     { id: 'Hertaverse', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/hertaverse.gif?raw=true', categories: ['branding'], className: 'w-[100px] h-[100px]' },
     { id: 'Infamia Museum', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/infamia.gif?raw=true', categories: ['ux/ui'], className: 'w-[100px] h-[100px]' },
@@ -114,6 +115,7 @@ export default function WorksPage() {
     'Uno Tarot': svgPaths.p2f537a00,
     'Office Apocalypse': svgPaths.p19ff1980,
     'Read Me Right!': svgPaths.p19ff1980,
+    'LynchUniverse': svgPaths.p19ff1980,
     'Break the Frame': svgPaths.p19ff1980,
     'Hertaverse': svgPaths.p2c26bdc0,
     'Infamia Museum': svgPaths.p30b01d80,
@@ -286,6 +288,7 @@ export default function WorksPage() {
       'Mean Bot': '/case/mean-bot',
       'Read Me Right!': '/case/read-me-right',
       'Break the Frame': '/case/break-the-frame',
+      'LynchUniverse': '/case/lynch-universe',
       // Agregar más rutas aquí cuando estén disponibles
     };
 
@@ -635,7 +638,7 @@ export default function WorksPage() {
           </div>
 
           {/* Categories - Fijas abajo con padding responsive */}
-          <div className="absolute bottom-[120px] right-4 md:bottom-8 md:right-8 flex justify-end items-end pt-6">
+          <div className="absolute bottom-[80px] right-4 md:bottom-8 md:right-8 flex justify-end items-end pt-6">
             <div className="space-y-3">
               {categories.map((category) => {
                 const isSelected = selectedCategory === category;

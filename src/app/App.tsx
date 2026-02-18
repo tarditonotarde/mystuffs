@@ -30,6 +30,7 @@ import HatersGonnaHateCase from './pages/case/HatersGonnaHateCase';
 import MeanBotCase from './pages/case/MeanBotCase';
 import ReadMeRightCase from './pages/case/ReadMeRightCase';
 import BreakTheFrameCase from './pages/case/BreakTheFrameCase';
+import LynchUniverseCase from './pages/case/LynchUniverseCase';
 import { ScrollToTop } from './components/ScrollToTop';
 import { MouseTrail } from './components/MouseTrail';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -72,6 +73,7 @@ export default function App() {
           <Route path="/case/mean-bot" element={<MeanBotCase />} />
           <Route path="/case/read-me-right" element={<ReadMeRightCase />} />
           <Route path="/case/break-the-frame" element={<BreakTheFrameCase />} />
+          <Route path="/case/lynch-universe" element={<LynchUniverseCase />} />
         </Routes>
       </HashRouter>
     </ThemeProvider>
