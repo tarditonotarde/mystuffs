@@ -22,11 +22,10 @@ export default function LynchUniverseCase() {
   const heroRef = useRef<HTMLDivElement>(null);
   const overviewRef = useRef<HTMLDivElement>(null);
   const challengeRef = useRef<HTMLDivElement>(null);
-  const researchRef = useRef<HTMLDivElement>(null);
-  const designRef = useRef<HTMLDivElement>(null);
-  const technicalRef = useRef<HTMLDivElement>(null);
-  const resultsRef = useRef<HTMLDivElement>(null);
-  const learningsRef = useRef<HTMLDivElement>(null);
+  const solutionRef = useRef<HTMLDivElement>(null);
+  const businessRef = useRef<HTMLDivElement>(null);
+  const marketingRef = useRef<HTMLDivElement>(null);
+  const impactRef = useRef<HTMLDivElement>(null);
 
   // Scroll animation state
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
@@ -76,11 +75,10 @@ export default function LynchUniverseCase() {
       { ref: heroRef, name: 'hero' },
       { ref: overviewRef, name: 'overview' },
       { ref: challengeRef, name: 'challenge' },
-      { ref: researchRef, name: 'research' },
-      { ref: designRef, name: 'design' },
-      { ref: technicalRef, name: 'technical' },
-      { ref: resultsRef, name: 'results' },
-      { ref: learningsRef, name: 'learnings' },
+      { ref: solutionRef, name: 'solution' },
+      { ref: businessRef, name: 'business' },
+      { ref: marketingRef, name: 'marketing' },
+      { ref: impactRef, name: 'impact' },
     ];
 
     refs.forEach(({ ref, name }) => {
@@ -245,39 +243,61 @@ export default function LynchUniverseCase() {
                   style={{ fontVariationSettings: "'wdth' 100" }}
                 >
                   Lynch Universe Stream ■ {typedText}
-                  <span className={`${showCursor ? 'opacity-100' : 'opacity-0'}`}>|</span>
+                  <span className={`inline-block w-[2px] h-[1em] ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`} style={{ backgroundColor: '#000000', verticalAlign: 'text-bottom' }}></span>
                 </h1>
               </div>
 
-              {/* TV Mockup + Description Flex */}
-              <div className="flex flex-col gap-8 lg:gap-12 items-center">
-                {/* Description Text */}
-                <div className={`flex items-center ${visibleSections.has('hero') ? 'scroll-fade-in-up delay-200' : 'opacity-0'}`}>
-                  <p 
-                    className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] text-center"
-                    style={{ fontVariationSettings: "'wdth' 100" }}
+              {/* iPhone + Description Flex */}
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+                {/* iPhone Frame */}
+                <div className={`mx-auto lg:mx-0 ${visibleSections.has('hero') ? 'scroll-fade-in-left delay-200' : 'opacity-0'}`} style={{ width: '195px', height: '423px' }}>
+                  <div 
+                    className="relative w-[390px] aspect-[9/19.5] bg-black rounded-[50px] p-3 shadow-2xl origin-top-left"
+                    style={{ transform: 'scale(0.5)' }}
                   >
-                    Lynch Universe Stream is not just a streaming UI clone. It is a digital tribute experience that reimagines the cinematic universe of David Lynch as if it were presented inside a premium platform similar to Netflix. Rather than fragmenting his work across multiple services, the project creates a unified tribute entry point that allows users to immerse themselves in Lynch's world through a curated, atmospheric streaming interface. This is a UX homage project, not a content distribution platform.
-                  </p>
+                    <div className="relative w-full h-full bg-white rounded-[42px] overflow-hidden">
+                      <iframe 
+                        src="https://tarditonotarde.github.io/LynchUniverse/"
+                        className="w-full h-full border-0"
+                        title="Lynch Universe Stream Mobile"
+                        allow="clipboard-write"
+                      />
+                    </div>
+                    
+                    {/* Side Buttons */}
+                    <div className="absolute left-[-4px] top-[120px] w-[4px] h-[60px] bg-black rounded-l-lg"></div>
+                    <div className="absolute left-[-4px] top-[190px] w-[4px] h-[60px] bg-black rounded-l-lg"></div>
+                    <div className="absolute left-[-4px] top-[260px] w-[4px] h-[60px] bg-black rounded-l-lg"></div>
+                    <div className="absolute right-[-4px] top-[200px] w-[4px] h-[100px] bg-black rounded-r-lg"></div>
+                  </div>
                 </div>
 
-                {/* TV Frame with Lynch Universe Stream */}
-                <div className={`w-[90%] mx-auto ${visibleSections.has('hero') ? 'scroll-fade-in-up delay-300' : 'opacity-0'}`}>
-                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                    <div 
-                      className="absolute top-0 left-1/2 w-[200%] aspect-[16/10]"
-                      style={{ transform: 'translateX(-50%) scale(0.5)', transformOrigin: 'top center' }}
-                    >
-                      <div className="relative w-full h-full bg-black rounded-[40px] p-8 shadow-2xl">
-                        {/* Screen */}
-                        <div className="relative w-full h-full bg-white rounded-[24px] overflow-hidden">
-                          <iframe 
-                            src="https://tarditonotarde.github.io/LynchUniverse/"
-                            className="w-full h-full border-0"
-                            title="Lynch Universe Stream Platform"
-                            allow="clipboard-write"
-                          />
-                        </div>
+                {/* Description Text */}
+                <div className={`flex items-center ${visibleSections.has('hero') ? 'scroll-fade-in-right delay-300' : 'opacity-0'}`}>
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px]"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    Lynch Universe Stream is a digital tribute experience that explores how streaming platforms can create immersive, curated portals dedicated to filmmakers, cultural movements, or commemorative dates.
+                  </p>
+                </div>
+              </div>
+
+              {/* TV Frame */}
+              <div className={`w-[90%] mx-auto mt-8 ${visibleSections.has('hero') ? 'scroll-fade-in-up delay-400' : 'opacity-0'}`}>
+                <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                  <div 
+                    className="absolute top-0 left-1/2 w-[200%] aspect-[16/10]"
+                    style={{ transform: 'translateX(-50%) scale(0.5)', transformOrigin: 'top center' }}
+                  >
+                    <div className="relative w-full h-full bg-black rounded-[40px] p-8 shadow-2xl">
+                      <div className="relative w-full h-full bg-white rounded-[24px] overflow-hidden">
+                        <iframe 
+                          src="https://tarditonotarde.github.io/LynchUniverse/"
+                          className="w-full h-full border-0"
+                          title="Lynch Universe Stream Platform"
+                          allow="clipboard-write"
+                        />
                       </div>
                     </div>
                   </div>
@@ -298,57 +318,80 @@ export default function LynchUniverseCase() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
               <div className={`space-y-10 ${visibleSections.has('overview') ? 'scroll-fade-in-left delay-200' : 'opacity-0'}`}>
                 <div>
-                  <h3 
-                    className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed"
                     style={{ fontVariationSettings: "'wdth' 100" }}
                   >
-                    Project Details
-                  </h3>
-                  <div className="space-y-3">
-                    <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <strong>Project Type:</strong> Streaming Platform Concept / Tribute Experience
-                    </p>
-                    <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <strong>Timeline:</strong> 2026
-                    </p>
-                    <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <strong>Role:</strong> Full-Stack Designer & Developer
-                    </p>
-                    <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <strong>Platform:</strong> SmartTV and Web (Desktop & Mobile Responsive)
-                    </p>
-                    <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <strong>Status:</strong> Live Production
-                    </p>
-                  </div>
+                    Rather than functioning as a content distribution service, it operates as a special profile within an existing platform. The goal is to transform traditional browsing into a narrative, atmospheric journey.
+                  </p>
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed mt-4"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    This project serves as a scalable and reusable format for editorial experiences inside streaming ecosystems.
+                  </p>
                 </div>
               </div>
 
-              <div className={`space-y-10 ${visibleSections.has('overview') ? 'scroll-fade-in-right delay-300' : 'opacity-0'}`}>
+              <div className={`space-y-8 ${visibleSections.has('overview') ? 'scroll-fade-in-right delay-300' : 'opacity-0'}`}>
                 <div>
-                  <h3 
-                    className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-[#8B8B8B] tracking-[-0.42px] mb-2"
                     style={{ fontVariationSettings: "'wdth' 100" }}
                   >
-                    Objectives
-                  </h3>
-                  <ul className="space-y-2 list-disc list-inside">
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Reimagine Lynch's filmography as a cohesive streaming universe
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Design a tribute-style entry point inspired by Netflix-level browsing patterns
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Create an immersive atmosphere aligned with Lynch's surreal aesthetic
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Demonstrate advanced front-end architecture and animation systems
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Merge cinema, UX design, and modern web engineering
-                    </li>
-                  </ul>
+                    Role
+                  </p>
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    Full-Stack Designer & Developer
+                  </p>
+                </div>
+
+                <div>
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-[#8B8B8B] tracking-[-0.42px] mb-2"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    Timeline
+                  </p>
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    2026
+                  </p>
+                </div>
+
+                <div>
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-[#8B8B8B] tracking-[-0.42px] mb-2"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    Status
+                  </p>
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    Live Production
+                  </p>
+                </div>
+
+                <div>
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-[#8B8B8B] tracking-[-0.42px] mb-2"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    Tech Stack
+                  </p>
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    React, TypeScript, Tailwind CSS v4, Framer Motion
+                  </p>
                 </div>
               </div>
             </div>
@@ -363,42 +406,14 @@ export default function LynchUniverseCase() {
           <div className={`w-full flex flex-col gap-12 ${visibleSections.has('challenge') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
             <Heading level={2}>the challenge</Heading>
 
-            {/* iPhone 16 Frame with Lynch Universe Stream */}
-            <div className={`mx-auto ${visibleSections.has('challenge') ? 'scroll-fade-in-up delay-200' : 'opacity-0'}`} style={{ width: '195px', height: '423px' }}>
-              <div 
-                className="relative w-[390px] aspect-[9/19.5] bg-black rounded-[50px] p-3 shadow-2xl origin-top-left"
-                style={{ transform: 'scale(0.5)' }}
-              >
-                
-                {/* Screen */}
-                <div className="relative w-full h-full bg-white rounded-[42px] overflow-hidden">
-                  <iframe 
-                    src="https://tarditonotarde.github.io/LynchUniverse/"
-                    className="w-full h-full border-0"
-                    title="Lynch Universe Stream Mobile"
-                    allow="clipboard-write"
-                  />
-                </div>
-                
-                {/* Side Buttons */}
-                <div className="absolute left-[-4px] top-[120px] w-[4px] h-[60px] bg-black rounded-l-lg"></div>
-                <div className="absolute left-[-4px] top-[190px] w-[4px] h-[60px] bg-black rounded-l-lg"></div>
-                <div className="absolute left-[-4px] top-[260px] w-[4px] h-[60px] bg-black rounded-l-lg"></div>
-                <div className="absolute right-[-4px] top-[200px] w-[4px] h-[100px] bg-black rounded-r-lg"></div>
-              </div>
-            </div>
-
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
               <div className={`space-y-10 ${visibleSections.has('challenge') ? 'scroll-fade-in-left delay-200' : 'opacity-0'}`}>
                 <div>
-                  <h3 
-                    className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed"
                     style={{ fontVariationSettings: "'wdth' 100" }}
                   >
-                    Problem Statement
-                  </h3>
-                  <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black leading-relaxed" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    David Lynch's extensive body of work spans films, series, short films, documentaries, interviews, and soundscapes. Existing platforms present this content in fragmented, inconsistent ways that don't honor the atmospheric and cohesive nature of Lynch's artistic vision.
+                    Streaming platforms compete heavily on content volume, but differentiation increasingly depends on experience, identity, and emotional connection.
                   </p>
                 </div>
 
@@ -407,20 +422,17 @@ export default function LynchUniverseCase() {
                     className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
                     style={{ fontVariationSettings: "'wdth' 100" }}
                   >
-                    Primary Goals
+                    Problem
                   </h3>
                   <ul className="space-y-2 list-disc list-inside">
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Design a unified, immersive platform reflecting Lynch's dark, surreal aesthetic
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      Commemorative or tribute content is often presented as temporary lists with little experiential depth
                     </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Organize 56+ unique videos across 6 curated categories
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      Editorial curation rarely translates into product-level immersion
                     </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Provide seamless video playback with YouTube integration
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Create a premium user experience rivaling major streaming platforms
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      Key cultural moments and anniversaries are underleveraged as engagement opportunities
                     </li>
                   </ul>
                 </div>
@@ -432,22 +444,34 @@ export default function LynchUniverseCase() {
                     className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
                     style={{ fontVariationSettings: "'wdth' 100" }}
                   >
-                    Target Audience
+                    Opportunity
                   </h3>
-                  <div className="space-y-3">
-                    <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <strong>Lynch Enthusiasts:</strong> Fans exploring his complete filmography
-                    </p>
-                    <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <strong>Film Students:</strong> Studying Lynchian cinema and experimental film
-                    </p>
-                    <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <strong>Casual Viewers:</strong> Discovering Lynch's work for the first time
-                    </p>
-                    <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <strong>Developers:</strong> Studying modern web application architecture
-                    </p>
-                  </div>
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed mb-4"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    Design a system of activatable curated experiences for:
+                  </p>
+                  <ul className="space-y-2 list-disc list-inside">
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      Visionary directors and creators
+                    </li>
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      Cinematic movements
+                    </li>
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      Cultural dates such as International Women's Day (8M)
+                    </li>
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      Strategic premieres or catalog repositioning
+                    </li>
+                  </ul>
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed mt-4"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    The opportunity lies in combining editorial vision, UX design, and marketing strategy into a cohesive product experience.
+                  </p>
                 </div>
               </div>
             </div>
@@ -457,173 +481,41 @@ export default function LynchUniverseCase() {
         {/* Divider */}
         <SectionDivider />
 
-        {/* Research Section */}
-        <section className="py-12 md:py-20" ref={researchRef}>
-          <div className={`w-full flex flex-col gap-12 ${visibleSections.has('research') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
-            <Heading level={2}>research & discovery</Heading>
-
-            <div className={`space-y-10 ${visibleSections.has('research') ? 'scroll-fade-in-up delay-200' : 'opacity-0'}`}>
-              <div>
-                <h3 
-                  className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
-                  style={{ fontVariationSettings: "'wdth' 100" }}
-                >
-                  Competitive Analysis
-                </h3>
-                <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black mb-4" style={{ fontVariationSettings: "'wdth' 100" }}>
-                  Platforms Studied:
-                </p>
-                <ul className="space-y-2 list-disc list-inside ml-4">
-                  <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    Netflix - Industry-leading UI/UX patterns, card-based browsing
-                  </li>
-                  <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    Disney+ - Content categorization, smooth animations
-                  </li>
-                  <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    HBO Max - Dark aesthetic, premium feel
-                  </li>
-                  <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    Criterion Channel - Curated film presentation
-                  </li>
-                  <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    YouTube - Video player integration, metadata display
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 
-                  className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
-                  style={{ fontVariationSettings: "'wdth' 100" }}
-                >
-                  Key Insights
-                </h3>
-                <ul className="space-y-2 list-disc list-inside ml-4">
-                  <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    Dark-first design reduces eye strain for extended viewing
-                  </li>
-                  <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    Card hover states provide quick content previews
-                  </li>
-                  <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    Categorization helps users navigate large catalogs
-                  </li>
-                  <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    Ambient audio enhances immersion
-                  </li>
-                  <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    Minimal UI keeps focus on content
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Divider */}
-        <SectionDivider />
-
-        {/* Design Process Section */}
-        <section className="py-12 md:py-20" ref={designRef}>
-          <div className={`w-full flex flex-col gap-12 ${visibleSections.has('design') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
-            <Heading level={2}>design process</Heading>
+        {/* The Solution Section */}
+        <section className="py-12 md:py-20" ref={solutionRef}>
+          <div className={`w-full flex flex-col gap-12 ${visibleSections.has('solution') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
+            <Heading level={2}>the solution</Heading>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-              <div className={`space-y-10 ${visibleSections.has('design') ? 'scroll-fade-in-left delay-200' : 'opacity-0'}`}>
+              <div className={`space-y-10 ${visibleSections.has('solution') ? 'scroll-fade-in-left delay-200' : 'opacity-0'}`}>
                 <div>
-                  <h3 
-                    className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed"
                     style={{ fontVariationSettings: "'wdth' 100" }}
                   >
-                    Design Principles
-                  </h3>
-                  <ul className="space-y-2 list-disc list-inside ml-4">
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Content-First: UI fades away when not needed
+                    A Streaming Tribute Experience model that transforms curation into a product feature.
+                  </p>
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed mt-4"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    Each portal functions as:
+                  </p>
+                  <ul className="space-y-2 list-disc list-inside mt-2">
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      A time-based immersive activation
                     </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Dark Aesthetic: Reflects Lynch's noir and surreal themes
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      A narrative-driven browsing experience
                     </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Premium Feel: Sophisticated animations and transitions
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Intuitive Navigation: Clear hierarchy and categorization
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Atmospheric: Ambient audio and visual effects create mood
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      An emotional entry point into the existing catalog
                     </li>
                   </ul>
                 </div>
               </div>
 
-              <div className={`space-y-10 ${visibleSections.has('design') ? 'scroll-fade-in-right delay-300' : 'opacity-0'}`}>
-                <div>
-                  <h3 
-                    className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
-                    style={{ fontVariationSettings: "'wdth' 100" }}
-                  >
-                    Color Strategy
-                  </h3>
-                  <ul className="space-y-2 list-disc list-inside ml-4">
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Deep blacks - Main backgrounds
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Netflix red - Brand accent, CTAs
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Subtle grays - Text hierarchy
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Transparency layers - Glass morphism, overlays
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Divider */}
-        <SectionDivider />
-
-        {/* Technical Implementation Section */}
-        <section className="py-12 md:py-20" ref={technicalRef}>
-          <div className={`w-full flex flex-col gap-12 ${visibleSections.has('technical') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
-            <Heading level={2}>technical implementation</Heading>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-              <div className={`space-y-10 ${visibleSections.has('technical') ? 'scroll-fade-in-left delay-200' : 'opacity-0'}`}>
-                <div>
-                  <h3 
-                    className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
-                    style={{ fontVariationSettings: "'wdth' 100" }}
-                  >
-                    Technology Stack
-                  </h3>
-                  <ul className="space-y-2 list-disc list-inside ml-4">
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      React 18.3.1 - Component architecture
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      TypeScript - Type safety
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Tailwind CSS v4 - Utility-first styling
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Framer Motion - Advanced animations
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      YouTube IFrame API - Video playback
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className={`space-y-10 ${visibleSections.has('technical') ? 'scroll-fade-in-right delay-300' : 'opacity-0'}`}>
+              <div className={`space-y-10 ${visibleSections.has('solution') ? 'scroll-fade-in-right delay-300' : 'opacity-0'}`}>
                 <div>
                   <h3 
                     className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
@@ -631,23 +523,35 @@ export default function LynchUniverseCase() {
                   >
                     Key Features
                   </h3>
-                  <ul className="space-y-2 list-disc list-inside ml-4">
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      56 unique videos with complete metadata
+                  <ul className="space-y-2 list-disc list-inside">
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      56+ curated videos organized with narrative intent
                     </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      6 curated categories with smooth animations
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      6 structured categories designed as experiential chapters
                     </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Premium card interactions
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      YouTube integration (embedded content for educational and artistic appreciation purposes)
                     </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      Adaptable visual identity aligned with the featured theme
+                    </li>
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      Premium microinteractions and motion design
+                    </li>
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
                       Immersive video modal with custom controls
                     </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Ambient audio system with visualizer
+                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                      Responsive design for Web and SmartTV environments
                     </li>
                   </ul>
+                  <p 
+                    className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed mt-4"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    Instead of infinite scroll, users move through a designed journey.
+                  </p>
                 </div>
               </div>
             </div>
@@ -657,59 +561,87 @@ export default function LynchUniverseCase() {
         {/* Divider */}
         <SectionDivider />
 
-        {/* Results Section */}
-        <section className="py-12 md:py-20" ref={resultsRef}>
-          <div className={`w-full flex flex-col gap-12 ${visibleSections.has('results') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
-            <Heading level={2}>results & impact</Heading>
+        {/* Business Vision Section */}
+        <section className="py-12 md:py-20" ref={businessRef}>
+          <div className={`w-full flex flex-col gap-12 ${visibleSections.has('business') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
+            <Heading level={2}>business vision</Heading>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-              <div className={`space-y-10 ${visibleSections.has('results') ? 'scroll-fade-in-left delay-200' : 'opacity-0'}`}>
-                <div>
-                  <h3 
-                    className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
-                    style={{ fontVariationSettings: "'wdth' 100" }}
-                  >
-                    Quantitative Metrics
-                  </h3>
-                  <div className="space-y-2">
-                    <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <strong>Page Load:</strong> Less than 2 seconds on 3G
+            <div className={`space-y-10 ${visibleSections.has('business') ? 'scroll-fade-in-up delay-200' : 'opacity-0'}`}>
+              <p 
+                className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed"
+                style={{ fontVariationSettings: "'wdth' 100" }}
+              >
+                From a product perspective, curated portals create strategic value.
+              </p>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                <div className="space-y-8">
+                  <div>
+                    <h3 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      Differentiation
+                    </h3>
+                    <p 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      They position a platform as a cultural curator rather than a passive distributor, increasing perceived brand depth and editorial authority.
                     </p>
-                    <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <strong>First Contentful Paint:</strong> Less than 1 second
-                    </p>
-                    <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <strong>Mobile Performance:</strong> 90+ Lighthouse score
-                    </p>
-                    <p className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <strong>Interaction Response:</strong> Less than 100ms
+                  </div>
+
+                  <div>
+                    <h3 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      Retention
+                    </h3>
+                    <p 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      Narrative pathways encourage longer sessions and reactivation of existing catalog content through contextual framing.
                     </p>
                   </div>
                 </div>
-              </div>
 
-              <div className={`space-y-10 ${visibleSections.has('results') ? 'scroll-fade-in-right delay-300' : 'opacity-0'}`}>
-                <div>
-                  <h3 
-                    className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
-                    style={{ fontVariationSettings: "'wdth' 100" }}
-                  >
-                    Technical Achievements
-                  </h3>
-                  <ul className="space-y-2 list-disc list-inside ml-4">
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Advanced React Patterns: Context API, custom hooks, component composition
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Sophisticated Animations: Framer Motion integration, spring physics
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Design System: Complete token-based theming
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Type Safety: Full TypeScript coverage
-                    </li>
-                  </ul>
+                <div className="space-y-8">
+                  <div>
+                    <h3 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      Scalability
+                    </h3>
+                    <p 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      The underlying system can be reused across multiple themes, creators, and cultural events, reducing activation cost compared to producing original content.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      Monetization Potential
+                    </h3>
+                    <ul className="space-y-2 list-disc list-inside">
+                      <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                        Premium-tier exclusive access
+                      </li>
+                      <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                        Sponsored cultural activations
+                      </li>
+                      <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                        Partnerships with film festivals, educational institutions, or cultural organizations
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -719,61 +651,152 @@ export default function LynchUniverseCase() {
         {/* Divider */}
         <SectionDivider />
 
-        {/* Key Learnings Section */}
-        <section className="py-12 md:py-20" ref={learningsRef}>
-          <div className={`w-full flex flex-col gap-12 ${visibleSections.has('learnings') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
-            <Heading level={2}>key learnings</Heading>
+        {/* Marketing Vision Section */}
+        <section className="py-12 md:py-20" ref={marketingRef}>
+          <div className={`w-full flex flex-col gap-12 ${visibleSections.has('marketing') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
+            <Heading level={2}>marketing vision</Heading>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-              <div className={`space-y-10 ${visibleSections.has('learnings') ? 'scroll-fade-in-left delay-200' : 'opacity-0'}`}>
-                <div>
-                  <h3 
-                    className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
-                    style={{ fontVariationSettings: "'wdth' 100" }}
-                  >
-                    Technical Insights
-                  </h3>
-                  <ul className="space-y-2 list-disc list-inside ml-4">
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      CSS Custom Properties enable responsive design at scale
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Framer Motion's declarative API is easier than CSS animations
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Context API is sufficient for most apps
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      TypeScript catches bugs early and improves developer experience
-                    </li>
-                  </ul>
+            <div className={`space-y-10 ${visibleSections.has('marketing') ? 'scroll-fade-in-up delay-200' : 'opacity-0'}`}>
+              <p 
+                className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed"
+                style={{ fontVariationSettings: "'wdth' 100" }}
+              >
+                This format expands marketing capabilities beyond traditional promotion.
+              </p>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                <div className="space-y-8">
+                  <div>
+                    <h3 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      Brand Storytelling
+                    </h3>
+                    <p 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      Each portal becomes a campaign in itself, reinforcing cultural values, diversity initiatives, and editorial positioning.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      Social Activation
+                    </h3>
+                    <p 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      Curated portals generate high-quality shareable moments, highlight reels, and narrative-driven promotional content.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      Cultural Calendar Strategy
+                    </h3>
+                    <p 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed mb-4"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      They allow platforms to strategically activate moments such as:
+                    </p>
+                    <ul className="space-y-2 list-disc list-inside">
+                      <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                        International Women's Day (8M)
+                      </li>
+                      <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                        Pride Month
+                      </li>
+                      <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                        Director anniversaries
+                      </li>
+                      <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                        Film movement retrospectives
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="space-y-8">
+                  <div>
+                    <h3 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      PR Positioning
+                    </h3>
+                    <p 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      Experiential portals are highly communicable to press and creative communities, strengthening the platform's image as innovative and culturally engaged.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 
+                      className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
+                      style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                      Audience
+                    </h3>
+                    <ul className="space-y-2 list-disc list-inside">
+                      <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                        Streaming product teams
+                      </li>
+                      <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                        Marketing and brand strategy departments
+                      </li>
+                      <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                        Cultural platforms exploring editorial innovation
+                      </li>
+                      <li className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                        Designers and developers studying immersive UX systems
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
 
-              <div className={`space-y-10 ${visibleSections.has('learnings') ? 'scroll-fade-in-right delay-300' : 'opacity-0'}`}>
-                <div>
-                  <h3 
-                    className="font-['Instrument_Sans:Regular',sans-serif] text-[24px] text-black tracking-[-1.2px] mb-4"
-                    style={{ fontVariationSettings: "'wdth' 100" }}
-                  >
-                    Design Insights
-                  </h3>
-                  <ul className="space-y-2 list-disc list-inside ml-4">
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Dark themes require careful contrast management
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Animations should be purposeful
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Hover states need breathing room to prevent jank
-                    </li>
-                    <li className="font-['Instrument_Sans:Regular',sans-serif] text-[16px] text-black" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      Mobile-first forces prioritization and better UX
-                    </li>
-                  </ul>
-                </div>
-              </div>
+        {/* Divider */}
+        <SectionDivider />
+
+        {/* Impact Section */}
+        <section className="py-12 md:py-20" ref={impactRef}>
+          <div className={`w-full flex flex-col gap-12 ${visibleSections.has('impact') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
+            <Heading level={2}>impact</Heading>
+
+            <div className={`${visibleSections.has('impact') ? 'scroll-fade-in-up delay-200' : 'opacity-0'}`}>
+              <p 
+                className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed"
+                style={{ fontVariationSettings: "'wdth' 100" }}
+              >
+                Lynch Universe Stream demonstrates a shift in perspective:
+              </p>
+              <p 
+                className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed mt-4"
+                style={{ fontVariationSettings: "'wdth' 100" }}
+              >
+                From showcasing content to designing curated cultural experiences with business, marketing, and emotional impact.
+              </p>
+              <p 
+                className="font-['Instrument_Sans:Regular',sans-serif] text-[14px] text-black tracking-[-0.42px] leading-relaxed mt-4"
+                style={{ fontVariationSettings: "'wdth' 100" }}
+              >
+                It proposes a scalable model that can be applied to any filmmaker, cultural movement, or commemorative date within the streaming ecosystem.
+              </p>
             </div>
           </div>
         </section>
