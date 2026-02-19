@@ -915,7 +915,7 @@ export default function HomePage() {
               {/* See More Button */}
               <motion.button 
                 onClick={() => navigate('/works')}
-                className="flex items-center gap-3 group cursor-pointer mt-4 h-[52px]"
+                className="flex items-center gap-3 group cursor-pointer mt-4 h-[52px] self-end"
                 onMouseEnter={() => setSeeMoreAnimKey(prev => prev + 1)}
                 variants={buttonVariants}
               >
