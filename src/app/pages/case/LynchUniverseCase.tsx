@@ -313,7 +313,7 @@ export default function LynchUniverseCase() {
         {/* Overview Section */}
         <section className="py-12 md:py-20" ref={overviewRef}>
           <div className={`w-full flex flex-col gap-12 ${visibleSections.has('overview') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
-            <Heading level={2}>overview</Heading>
+            <Heading level={2}>Overview</Heading>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
               <div className={`space-y-10 ${visibleSections.has('overview') ? 'scroll-fade-in-left delay-200' : 'opacity-0'}`}>
@@ -404,7 +404,7 @@ export default function LynchUniverseCase() {
         {/* The Challenge Section */}
         <section className="py-12 md:py-20" ref={challengeRef}>
           <div className={`w-full flex flex-col gap-12 ${visibleSections.has('challenge') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
-            <Heading level={2}>the challenge</Heading>
+            <Heading level={2}>The Challenge</Heading>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
               <div className={`space-y-10 ${visibleSections.has('challenge') ? 'scroll-fade-in-left delay-200' : 'opacity-0'}`}>
@@ -484,7 +484,7 @@ export default function LynchUniverseCase() {
         {/* The Solution Section */}
         <section className="py-12 md:py-20" ref={solutionRef}>
           <div className={`w-full flex flex-col gap-12 ${visibleSections.has('solution') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
-            <Heading level={2}>the solution</Heading>
+            <Heading level={2}>The Solution</Heading>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
               <div className={`space-y-10 ${visibleSections.has('solution') ? 'scroll-fade-in-left delay-200' : 'opacity-0'}`}>
@@ -564,7 +564,7 @@ export default function LynchUniverseCase() {
         {/* Business Vision Section */}
         <section className="py-12 md:py-20" ref={businessRef}>
           <div className={`w-full flex flex-col gap-12 ${visibleSections.has('business') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
-            <Heading level={2}>business vision</Heading>
+            <Heading level={2}>Business Vision</Heading>
 
             <div className={`space-y-10 ${visibleSections.has('business') ? 'scroll-fade-in-up delay-200' : 'opacity-0'}`}>
               <p 
@@ -654,7 +654,7 @@ export default function LynchUniverseCase() {
         {/* Marketing Vision Section */}
         <section className="py-12 md:py-20" ref={marketingRef}>
           <div className={`w-full flex flex-col gap-12 ${visibleSections.has('marketing') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
-            <Heading level={2}>marketing vision</Heading>
+            <Heading level={2}>Marketing Vision</Heading>
 
             <div className={`space-y-10 ${visibleSections.has('marketing') ? 'scroll-fade-in-up delay-200' : 'opacity-0'}`}>
               <p 
@@ -776,7 +776,7 @@ export default function LynchUniverseCase() {
         {/* Impact Section */}
         <section className="py-12 md:py-20" ref={impactRef}>
           <div className={`w-full flex flex-col gap-12 ${visibleSections.has('impact') ? 'scroll-fade-in-up' : 'opacity-0'}`}>
-            <Heading level={2}>impact</Heading>
+            <Heading level={2}>Impact</Heading>
 
             <div className={`${visibleSections.has('impact') ? 'scroll-fade-in-up delay-200' : 'opacity-0'}`}>
               <p 
