@@ -26,7 +26,8 @@ export default function WorksPage() {
   const [hoveredWork, setHoveredWork] = useState<string | null>(null);
   const [draggedImage, setDraggedImage] = useState<number | null>(null);
   const [hasDragged, setHasDragged] = useState(false);
-  const [isCarouselMode, setIsCarouselMode] = useState(false); // Nuevo estado para modo carousel
+  const [isGridMode, setIsGridMode] = useState(false); // Nuevo estado para modo grid
+  const [isMobile, setIsMobile] = useState(false); // Nuevo estado para detectar mobile
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Detectar scroll para cambiar el botón de menú
@@ -43,13 +44,21 @@ export default function WorksPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevenir scroll en toda la página (especialmente mobile)
+  // Prevenir scroll en toda la página (solo en modo floating)
   useEffect(() => {
-    // Prevenir scroll en toda la página
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.width = '100%';
-    document.body.style.height = '100%';
+    if (!isGridMode) {
+      // Prevenir scroll en toda la página solo en modo floating
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.height = '100%';
+    } else {
+      // En modo grid, PERMITIR scroll normal del body
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.height = '';
+    }
     
     return () => {
       // Restaurar al salir
@@ -58,6 +67,20 @@ export default function WorksPage() {
       document.body.style.width = '';
       document.body.style.height = '';
     };
+  }, [isGridMode]);
+
+  // Detectar si estamos en mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Verificar al cargar
+    checkMobile();
+
+    // Escuchar cambios de tamaño de ventana
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   const works: WorkItem[] = [
@@ -299,15 +322,27 @@ export default function WorksPage() {
   };
 
   return (
-    <div className="h-[100vh] w-full transition-colors duration-300 flex flex-col" style={{ backgroundColor: colors.bg }}>
+    <div 
+      className={`w-full transition-colors duration-300 ${isGridMode ? 'min-h-screen' : 'h-[100vh] overflow-hidden flex flex-col'}`} 
+      style={{ 
+        backgroundColor: colors.bg,
+        WebkitOverflowScrolling: 'touch' // Smooth scrolling en iOS
+      }}
+    >
         
-        {/* Header */}
-        <section className="p-[0px] pt-4 flex-shrink-0">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 px-[64px] py-[0px]">
-            <div className="flex items-center gap-4">
+        {/* Header - Fixed en modo grid, normal en modo floating */}
+        <section 
+          className={`${isGridMode ? 'fixed top-0 left-0 right-0' : 'relative'} z-[100] w-full px-4 md:px-[64px] pt-3 md:pt-4 pb-3 md:pb-4 flex-shrink-0 transition-colors duration-300`} 
+          style={{ 
+            backgroundColor: colors.bg
+          }}
+        >
+          <div className="flex flex-row justify-between items-start gap-2 md:gap-8">
+            {/* Lado izquierdo: botones + título con wrap */}
+            <div className="flex items-center gap-2 md:gap-4 flex-wrap">
               {/* Theme Toggle Button */}
               <button 
-                className="w-[36px] h-[36px] transition-colors [&_path]:hover:fill-[#8B8B8B]"
+                className="w-[32px] md:w-[36px] h-[32px] md:h-[36px] flex-shrink-0 transition-colors [&_path]:hover:fill-[#8B8B8B]"
                 aria-label="Toggle theme"
                 onClick={toggleTheme}
               >
@@ -336,7 +371,7 @@ export default function WorksPage() {
 
               {/* Carousel/Grid Toggle Button */}
               <button
-                onClick={() => setIsCarouselMode(!isCarouselMode)}
+                onClick={() => setIsGridMode(!isGridMode)}
                 className="w-[32px] h-[32px] rounded-full flex items-center justify-center transition-colors group flex-shrink-0"
                 style={{ 
                   border: `1px solid ${colors.text}`,
@@ -344,7 +379,7 @@ export default function WorksPage() {
                 }}
                 aria-label="Toggle carousel mode"
               >
-                {isCarouselMode ? (
+                {isGridMode ? (
                   <GalleryHorizontal size={18} strokeWidth={1.5} stroke={colors.text} className="group-hover:!stroke-[#8B8B8B] transition-colors" />
                 ) : (
                   <LayoutGrid size={18} strokeWidth={1.5} stroke={colors.text} className="group-hover:!stroke-[#8B8B8B] transition-colors" />
@@ -358,37 +393,10 @@ export default function WorksPage() {
                     {selectedCategory === 'all' ? 'everything' : selectedCategory}
                   </Heading>
                 </div>
-                
-                {/* Mostrar nombre del proyecto en hover O cuando se está arrastrando */}
-                {(() => {
-                  const displayedWork = hoveredWork || (draggedImage !== null ? filteredWorks[draggedImage]?.id : null);
-                  
-                  return displayedWork && (
-                    <div className="flex items-center gap-3">
-                      {/* Icono rallado animado diferente por proyecto */}
-                      <div className="w-[24px] h-[24px] flex items-center justify-center flex-shrink-0">
-                        <svg className="block w-full h-full" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 25 23">
-                          <path 
-                            key={displayedWork} 
-                            className="animated-scribble-hover" 
-                            d={projectIcons[displayedWork]} 
-                            stroke={colors.text}
-                            strokeLinecap="round" 
-                            strokeWidth="0.5" 
-                          />
-                        </svg>
-                      </div>
-                      
-                      {/* Nombre del proyecto */}
-                      <div className="text-[18px] md:text-[24px] tracking-[-0.72px] transition-colors duration-300 flex-shrink-0 leading-none" style={{ fontFamily: 'Instrument Sans, sans-serif', color: colors.text }}>
-                        {getDisplayName(displayedWork)}
-                      </div>
-                    </div>
-                  );
-                })()}
               </div>
             </div>
 
+            {/* Menu Button - En el flujo normal del flex */}
             <div 
               className="relative"
               onMouseLeave={() => {
@@ -396,7 +404,7 @@ export default function WorksPage() {
               }}
             >
               <button 
-                className="fixed top-4 right-6 md:right-12 lg:right-16 w-[80px] h-[64px] z-50 transition-all duration-700 ease-in-out group cursor-pointer"
+                className="w-[80px] h-[64px] transition-all duration-700 ease-in-out group cursor-pointer"
                 onMouseEnter={() => {
                   setAnimationKey(prev => prev + 1);
                   setIsMenuOpen(true);
@@ -416,9 +424,8 @@ export default function WorksPage() {
               {/* Dropdown Menu */}
               {isMenuOpen && (
                 <div 
-                  className="fixed top-[76px] right-6 md:right-12 lg:right-16 z-50 shadow-lg transition-colors duration-300"
+                  className="absolute top-[76px] right-0 z-50 shadow-lg transition-colors duration-300"
                   style={{
-                    transform: 'translateX(calc(50% - 40px))',
                     backgroundColor: colors.bg,
                     borderColor: colors.text,
                     borderWidth: '1px',
@@ -578,32 +585,82 @@ export default function WorksPage() {
         </section>
 
         {/* Works Section - Ocupa el espacio restante */}
-        <div className="relative flex-1 px-[64px] pb-[64px] md:pb-[64px]">
+        <div className={`relative px-4 md:px-[64px] pb-8 md:pb-[64px] ${isGridMode ? 'pt-[100px]' : 'flex-1 flex flex-col'}`}>
           
-          {/* Contenedor de imágenes - Modo Floating vs Carousel */}
-          <div className="relative w-full h-[calc(100%-280px)] md:h-[calc(100%-280px)]" ref={containerRef}>
-            {isCarouselMode ? (
-              /* Modo Carousel - Imágenes en fila horizontal con scroll */
-              <div className="h-full flex items-center overflow-x-auto gap-6 px-4 scrollbar-hide" style={{ scrollBehavior: 'smooth', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                {filteredWorks.map((work, index) => (
-                  <div
-                    key={work.id}
-                    className="flex-shrink-0 w-[100px] h-[100px] hover:scale-110 transition-transform duration-300 cursor-pointer"
-                    onMouseEnter={() => setHoveredWork(work.id)}
-                    onMouseLeave={() => setHoveredWork(null)}
-                    onClick={() => handleImageClick(work.id)}
-                  >
-                    <img
-                      src={work.image}
-                      alt={work.id}
-                      width={100}
-                      height={100}
-                      loading={index < 6 ? "eager" : "lazy"}
-                      decoding="async"
-                      className="w-full h-full object-cover pointer-events-none select-none"
-                    />
-                  </div>
-                ))}
+          {/* Contenedor de imágenes - Modo Floating vs Grid */}
+          <div className={`relative w-full ${isGridMode ? '' : 'flex-1'}`} ref={containerRef}>
+            {isGridMode ? (
+              /* Modo Grid - Grid responsivo organizado */
+              <div className="w-full px-0 md:px-4 pt-4 pb-8 md:py-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 auto-rows-min">
+                  {filteredWorks.map((work, index) => (
+                    <div
+                      key={work.id}
+                      className="w-full flex flex-col gap-2"
+                    >
+                      {/* Imagen */}
+                      <div
+                        className="w-full aspect-square relative group cursor-pointer overflow-hidden"
+                        onMouseEnter={() => setHoveredWork(work.id)}
+                        onMouseLeave={() => setHoveredWork(null)}
+                        onClick={() => handleImageClick(work.id)}
+                      >
+                        <img
+                          src={work.image}
+                          alt={work.id}
+                          width={100}
+                          height={100}
+                          loading={index < 6 ? "eager" : "lazy"}
+                          decoding="async"
+                          className="w-full h-full object-cover pointer-events-none select-none transition-transform duration-300 group-hover:scale-110"
+                        />
+                        
+                        {/* Overlay con nombre y SVG - Solo desktop (hover) */}
+                        {!isMobile && hoveredWork === work.id && (
+                          <div className="absolute inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center gap-2 z-10">
+                            {/* SVG Icon */}
+                            <div className="w-[24px] h-[24px] flex items-center justify-center flex-shrink-0">
+                              <svg className="block w-full h-full" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 25 23">
+                                <path 
+                                  key={work.id} 
+                                  className="animated-scribble-hover" 
+                                  d={projectIcons[work.id]} 
+                                  stroke="#FFFFFF"
+                                  strokeLinecap="round" 
+                                  strokeWidth="0.5" 
+                                />
+                              </svg>
+                            </div>
+                            
+                            {/* Project Name */}
+                            <div 
+                              className="text-[14px] md:text-[16px] tracking-[-0.42px] text-white text-center px-2" 
+                              style={{ fontFamily: 'Instrument Sans, sans-serif' }}
+                            >
+                              {getDisplayName(work.id)}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Nombre del proyecto - Solo mobile, siempre visible DEBAJO */}
+                      {isMobile && (
+                        <div className="flex items-center justify-center">
+                          {/* Project Name */}
+                          <div 
+                            className="text-[12px] tracking-[-0.36px] text-center transition-colors" 
+                            style={{ 
+                              fontFamily: 'Instrument Sans, sans-serif',
+                              color: colors.text
+                            }}
+                          >
+                            {getDisplayName(work.id)}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             ) : (
               /* Modo Floating - Imágenes posicionadas aleatoriamente */
@@ -611,7 +668,7 @@ export default function WorksPage() {
                 {filteredWorks.map((work, index) => (
                   <div
                     key={work.id}
-                    className={`absolute w-[100px] h-[100px] hover:scale-110 hover:z-10 ${draggedImage === index ? 'cursor-grabbing scale-110 z-20' : 'cursor-grab'} ${draggedImage === index ? '' : 'transition-all duration-500'}`}
+                    className={`absolute w-[100px] h-[100px] group overflow-hidden ${draggedImage === index ? 'cursor-grabbing scale-110 z-20' : 'cursor-grab hover:scale-110 hover:z-10'} ${draggedImage === index ? '' : 'transition-all duration-500'}`}
                     style={{
                       top: imagePositions[index]?.top || '0%',
                       left: imagePositions[index]?.left || '0%',
@@ -629,8 +686,35 @@ export default function WorksPage() {
                       height={100}
                       loading={index < 10 ? "eager" : "lazy"}
                       decoding="async"
-                      className="w-full h-full object-cover pointer-events-none select-none"
+                      className="w-full h-full object-cover pointer-events-none select-none transition-transform duration-300 group-hover:scale-110"
                     />
+                    
+                    {/* Overlay con nombre y SVG */}
+                    {hoveredWork === work.id && draggedImage !== index && (
+                      <div className="absolute inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center gap-2 z-10">
+                        {/* SVG Icon */}
+                        <div className="w-[20px] h-[20px] flex items-center justify-center flex-shrink-0">
+                          <svg className="block w-full h-full" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 25 23">
+                            <path 
+                              key={work.id} 
+                              className="animated-scribble-hover" 
+                              d={projectIcons[work.id]} 
+                              stroke="#FFFFFF"
+                              strokeLinecap="round" 
+                              strokeWidth="0.5" 
+                            />
+                          </svg>
+                        </div>
+                        
+                        {/* Project Name */}
+                        <div 
+                          className="text-[10px] tracking-[-0.3px] text-white text-center px-1 leading-tight" 
+                          style={{ fontFamily: 'Instrument Sans, sans-serif' }}
+                        >
+                          {getDisplayName(work.id)}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </>
@@ -638,7 +722,7 @@ export default function WorksPage() {
           </div>
 
           {/* Categories - Fijas abajo con padding responsive */}
-          <div className="absolute bottom-[80px] right-4 md:bottom-8 md:right-8 flex justify-end items-end pt-6">
+          <div className={`${isGridMode ? 'mt-12 relative bottom-[80px] md:bottom-8' : 'absolute bottom-[80px] md:bottom-8'} right-4 md:right-8 flex justify-end items-end pt-6`}>
             <div className="space-y-3">
               {categories.map((category) => {
                 const isSelected = selectedCategory === category;
