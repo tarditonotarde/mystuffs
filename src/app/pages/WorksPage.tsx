@@ -722,7 +722,7 @@ export default function WorksPage() {
           </div>
 
           {/* Categories - Fijas abajo con padding responsive */}
-          <div className={`${isGridMode ? 'mt-12 relative bottom-[80px] md:bottom-8' : 'absolute bottom-[80px] md:bottom-8'} right-4 md:right-8 flex justify-end items-end pt-6`}>
+          <div className={`${isGridMode ? 'mt-12 relative bottom-[80px] md:bottom-8' : 'absolute bottom-[120px] md:bottom-8'} right-4 md:right-8 flex justify-end items-end pt-6`}>
             <div className="space-y-3">
               {categories.map((category) => {
                 const isSelected = selectedCategory === category;
