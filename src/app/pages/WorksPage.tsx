@@ -7,6 +7,7 @@ import svgPathsScribble from "../../imports/svg-8varu1tqqx";
 import svgPathsTheme from "../../imports/svg-u95vusejla";
 import { ArrowButton, IconButton, Heading } from "../components/design-system";
 
+// WorksPage Component - Portfolio Gallery with floating and grid modes
 type Category = 'all' | 'ux/ui' | 'editorial' | 'branding' | 'playground' | 'art & culture';
 
 interface WorkItem {
@@ -29,6 +30,8 @@ export default function WorksPage() {
   const [isGridMode, setIsGridMode] = useState(false); // Nuevo estado para modo grid
   const [isMobile, setIsMobile] = useState(false); // Nuevo estado para detectar mobile
   const containerRef = useRef<HTMLDivElement>(null);
+  const dragStartPos = useRef<{ x: number; y: number } | null>(null);
+  const clickStartPos = useRef<{ x: number; y: number } | null>(null);
 
   // Detectar scroll para cambiar el botón de menú
   useEffect(() => {
@@ -188,10 +191,17 @@ export default function WorksPage() {
     if (draggedImage === null) return;
 
     const handleGlobalMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return;
+      if (!containerRef.current || !dragStartPos.current) return;
       
-      // Marcar que hubo movimiento durante el drag
-      setHasDragged(true);
+      // Calcular distancia movida desde el inicio
+      const deltaX = Math.abs(e.clientX - dragStartPos.current.x);
+      const deltaY = Math.abs(e.clientY - dragStartPos.current.y);
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      
+      // Solo marcar como drag si se movió más de 5 pixels
+      if (distance > 5) {
+        setHasDragged(true);
+      }
       
       const container = containerRef.current.getBoundingClientRect();
       
@@ -211,16 +221,24 @@ export default function WorksPage() {
     };
 
     const handleGlobalTouchMove = (e: TouchEvent) => {
-      if (!containerRef.current) return;
+      if (!containerRef.current || !dragStartPos.current) return;
       
       // Prevenir scroll mientras se arrastra
       e.preventDefault();
       
-      // Marcar que hubo movimiento durante el drag
-      setHasDragged(true);
+      const touch = e.touches[0];
+      
+      // Calcular distancia movida desde el inicio
+      const deltaX = Math.abs(touch.clientX - dragStartPos.current.x);
+      const deltaY = Math.abs(touch.clientY - dragStartPos.current.y);
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      
+      // Solo marcar como drag si se movió más de 5 pixels
+      if (distance > 5) {
+        setHasDragged(true);
+      }
       
       const container = containerRef.current.getBoundingClientRect();
-      const touch = e.touches[0];
       
       // Calcular posición en porcentaje basado en la posición del touch
       const newLeft = ((touch.clientX - container.left) / container.width) * 100 - 5;
@@ -238,14 +256,16 @@ export default function WorksPage() {
 
     const handleGlobalMouseUp = () => {
       setDraggedImage(null);
+      dragStartPos.current = null;
       // Esperar un poco antes de resetear hasDragged para que onClick no se dispare
-      setTimeout(() => setHasDragged(false), 100);
+      setTimeout(() => setHasDragged(false), 50);
     };
 
     const handleGlobalTouchEnd = () => {
       setDraggedImage(null);
+      dragStartPos.current = null;
       // Esperar un poco antes de resetear hasDragged para que onClick no se dispare
-      setTimeout(() => setHasDragged(false), 100);
+      setTimeout(() => setHasDragged(false), 50);
     };
 
     document.addEventListener('mousemove', handleGlobalMouseMove);
@@ -266,6 +286,8 @@ export default function WorksPage() {
     e.preventDefault();
     setHasDragged(false); // Resetear el estado de drag al iniciar
     setDraggedImage(index);
+    dragStartPos.current = { x: e.clientX, y: e.clientY };
+    clickStartPos.current = { x: e.clientX, y: e.clientY }; // Guardar posición para detectar click
   };
 
   // Inicio del drag (touch)
@@ -273,13 +295,40 @@ export default function WorksPage() {
     e.preventDefault();
     setHasDragged(false); // Resetear el estado de drag al iniciar
     setDraggedImage(index);
+    const touch = e.touches[0];
+    dragStartPos.current = { x: touch.clientX, y: touch.clientY };
+    clickStartPos.current = { x: touch.clientX, y: touch.clientY }; // Guardar posición para detectar click
   };
 
   // Manejar click en imagen para navegar al case study
-  const handleImageClick = (workId: string) => {
-    // Solo navegar si no se está arrastrando y no hubo drag reciente
-    if (draggedImage !== null || hasDragged) return;
+  const handleImageClick = (e: React.MouseEvent, workId: string) => {
+    // Verificar si hubo movimiento significativo desde el mouseDown
+    if (clickStartPos.current) {
+      const deltaX = Math.abs(e.clientX - clickStartPos.current.x);
+      const deltaY = Math.abs(e.clientY - clickStartPos.current.y);
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      
+      // Si se movió más de 5 pixels, fue un drag, no un click
+      if (distance > 5) {
+        clickStartPos.current = null;
+        return;
+      }
+    }
     
+    // Limpiar la posición de click
+    clickStartPos.current = null;
+    
+    // Navegar al case study
+    navigateToCaseStudy(workId);
+  };
+
+  // Función simplificada para navegar (usada en modo grid)
+  const handleImageClickSimple = (workId: string) => {
+    navigateToCaseStudy(workId);
+  };
+
+  // Función helper para navegar a case study
+  const navigateToCaseStudy = (workId: string) => {
     // Mapeo de IDs a rutas de case study
     const caseStudyRoutes: Record<string, string> = {
       'MonoBank': '/case/monobank',
@@ -603,7 +652,7 @@ export default function WorksPage() {
                         className="w-full aspect-square relative group cursor-pointer overflow-hidden"
                         onMouseEnter={() => setHoveredWork(work.id)}
                         onMouseLeave={() => setHoveredWork(null)}
-                        onClick={() => handleImageClick(work.id)}
+                        onClick={() => handleImageClickSimple(work.id)}
                       >
                         <img
                           src={work.image}
@@ -677,7 +726,7 @@ export default function WorksPage() {
                     onMouseLeave={() => setHoveredWork(null)}
                     onMouseDown={(e) => handleImageMouseDown(e, index)}
                     onTouchStart={(e) => handleImageTouchStart(e, index)}
-                    onClick={() => handleImageClick(work.id)}
+                    onClick={(e) => handleImageClick(e, work.id)}
                   >
                     <img
                       src={work.image}
@@ -691,7 +740,7 @@ export default function WorksPage() {
                     
                     {/* Overlay con nombre y SVG */}
                     {hoveredWork === work.id && draggedImage !== index && (
-                      <div className="absolute inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center gap-2 z-10">
+                      <div className="absolute inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center gap-2 z-10 pointer-events-none">
                         {/* SVG Icon */}
                         <div className="w-[20px] h-[20px] flex items-center justify-center flex-shrink-0">
                           <svg className="block w-full h-full" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 25 23">
