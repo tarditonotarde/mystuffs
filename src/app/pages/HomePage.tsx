@@ -19,11 +19,11 @@ import imgUx8 from "figma:asset/47ef43ef8f975472b72131b51e4d0a3f4b1a6432.png";
 const translations = {
   EN: {
     greeting: "👋 Hey! I'm Claudia Tardito,",
-    subtitle1: "a product designer.",
+    subtitle1: "a cross-disciplinary designer.",
     subtitle2: "Welcome to my playgrounds…",
     subtitle3: "and yes, the occasional",
     greetingFunny: "💀 Sup. I'm Claudia Tardito,",
-    subtitle1Funny: "a product designer.",
+    subtitle1Funny: "a creative Frankenstein.",
     subtitle2Funny: "Welcome to my therapy sessions…",
     subtitle3Funny: "I mean, the occasional",
     wordsFunny: ['disaster.', 'existential crisis.', 'procrastination.', 'imposter syndrome.', 'anxiety.', 'overthinking.', 'caffeine addiction.', 'burnout.', 'self-doubt.', 'panic.', 'stress.'],
@@ -52,11 +52,11 @@ const translations = {
   },
   ES: {
     greeting: "👋 ¡Hola! Soy Claudia Tardito,",
-    subtitle1: "diseñadora de producto.",
+    subtitle1: "una diseñadora interdisciplinar.",
     subtitle2: "Bienvenido a mis experimentos…",
     subtitle3: "y sí, ocasional",
     greetingFunny: "💀 Hola. Soy Claudia Tardito,",
-    subtitle1Funny: "diseñadora de producto.",
+    subtitle1Funny: "un Frankenstein creativo.",
     subtitle2Funny: "Bienvenido a mis sesiones de terapia…",
     subtitle3Funny: "Quiero decir, ocasional",
     wordsFunny: ['desastre.', 'crisis existencial.', 'procrastinación.', 'síndrome del impostor.', 'ansiedad.', 'sobrepensamiento.', 'adicción a la cafeína.', 'agotamiento.', 'duda personal.', 'pánico.', 'estrés.'],
