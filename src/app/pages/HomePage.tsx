@@ -763,7 +763,7 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <p className="text-[24px] tracking-[-0.72px] transition-colors group-hover:!text-[#8B8B8B]" style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontVariationSettings: "'wdth' 100", color: colors.text }}>
-                  Break the Frame
+                  Break the Frame App
                 </p>
               </motion.div>
 
@@ -792,7 +792,7 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <p className="text-[24px] tracking-[-0.72px] transition-colors group-hover:!text-[#8B8B8B]" style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontVariationSettings: "'wdth' 100", color: colors.text }}>
-                  Read Me Right!
+                  Read Me Right! Feature
                 </p>
               </motion.div>
 
@@ -850,7 +850,7 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <p className="text-[24px] tracking-[-0.72px] transition-colors group-hover:!text-[#8B8B8B]" style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontVariationSettings: "'wdth' 100", color: colors.text }}>
-                  BeatBits
+                  BeatBits App  
                 </p>
               </motion.div>
 
