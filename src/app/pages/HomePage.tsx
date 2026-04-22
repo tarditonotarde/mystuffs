@@ -102,9 +102,9 @@ export default function HomePage() {
   const [readMeRightAnimKey, setReadMeRightAnimKey] = useState(0);
   const [breakTheFrameAnimKey, setBreakTheFrameAnimKey] = useState(0);
   const [lynchUniverseAnimKey, setLynchUniverseAnimKey] = useState(0);
-  const [monoBankAnimKey, setMonoBankAnimKey] = useState(0);
+  const [TrashtourAnimKey, setTrashtourAnimKey] = useState(0);
   const [beatBitsAnimKey, setBeatBitsAnimKey] = useState(0);
-  const [chronoGoAnimKey, setChronoGoAnimKey] = useState(0);
+  const [InfinitoGoAnimKey, setInfinitoGoAnimKey] = useState(0);
   const [hertaAnimKey, setHertaAnimKey] = useState(0);
   const [seeMoreAnimKey, setSeeMoreAnimKey] = useState(0);
   const [resumeAnimKey, setResumeAnimKey] = useState(0);
@@ -133,9 +133,9 @@ export default function HomePage() {
     'ux-4': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/readme.gif?raw=true',
     'ux-4b': 'https://raw.githubusercontent.com/tarditonotarde/IMAGES_REPO/refs/heads/main/public/assets/IMAGES/MAIN-PORT/break.gif',
     'ux-4c': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/lynch.gif?raw=true',
-    'ux-5': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/monobank.gif?raw=true',
+    'ux-5': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/trash-ber.gif?raw=true',
     'ux-6': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/beatbits.gif?raw=true',
-    'ux-7': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/chrono-go.gif?raw=true',
+    'ux-7': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/infinito.gif?raw=true',
     'ux-8': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/herta.gif?raw=true',
   };
 
@@ -796,22 +796,22 @@ export default function HomePage() {
                 </p>
               </motion.div>
 
-              {/* MonoBank */}
+              {/* Trashtour */}
               <motion.div 
                 className="flex items-center gap-4 cursor-pointer group"
                 onMouseEnter={() => {
-                  setMonoBankAnimKey(prev => prev + 1);
+                  setTrashtourAnimKey(prev => prev + 1);
                   setHoveredProject('ux-5');
                   generateRandomPosition();
                 }}
                 onMouseLeave={() => setHoveredProject(null)}
-                onClick={() => navigate('/case/monobank')}
+                onClick={() => navigate('/case/trashtour-ber')}
                 variants={projectVariants}
               >
                 <div className="w-[24px] h-[20px]">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 21">
                     <path 
-                      key={monoBankAnimKey}
+                      key={TrashtourAnimKey}
                       className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
                       d={svgPathsIcons.p35507900} 
                       stroke={colors.text}
@@ -821,7 +821,7 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <p className="text-[24px] tracking-[-0.72px] transition-colors group-hover:!text-[#8B8B8B]" style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontVariationSettings: "'wdth' 100", color: colors.text }}>
-                  MonoBank
+                  Trashtour Magazine
                 </p>
               </motion.div>
 
@@ -854,22 +854,22 @@ export default function HomePage() {
                 </p>
               </motion.div>
 
-              {/* Chrono-go */}
+              {/* Infinito-go */}
               <motion.div 
                 className="flex items-center gap-4 cursor-pointer group"
                 onMouseEnter={() => {
-                  setChronoGoAnimKey(prev => prev + 1);
+                  setInfinitoGoAnimKey(prev => prev + 1);
                   setHoveredProject('ux-7');
                   generateRandomPosition();
                 }}
                 onMouseLeave={() => setHoveredProject(null)}
-                onClick={() => navigate('/case/chronogo')}
+                onClick={() => navigate('/case/infinito')}
                 variants={projectVariants}
               >
                 <div className="w-[24px] h-[23px]">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 24">
                     <path 
-                      key={chronoGoAnimKey}
+                      key={InfinitoGoAnimKey}
                       className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
                       d={svgPathsIcons.p30b01d80} 
                       stroke={colors.text}
@@ -879,7 +879,7 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <p className="text-[24px] tracking-[-0.72px] transition-colors group-hover:!text-[#8B8B8B]" style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontVariationSettings: "'wdth' 100", color: colors.text }}>
-                  Chrono-go
+                  Infinito Circus
                 </p>
               </motion.div>
 
