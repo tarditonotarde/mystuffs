@@ -10,10 +10,6 @@ import svgPathsTheme from "../../imports/svg-u95vusejla";
 import svgPathsLightMode from "../../imports/svg-w2mg1j23i3";
 import svgPathsSmile from "../../imports/svg-qh6vzvzq0q";
 import svgPathsDevil from "../../imports/svg-uqlnpcxu0j";
-import imgUx5 from "figma:asset/47a3b0cc3f987ef875ceab353bd5ec75ee5ae161.png";
-import imgUx6 from "figma:asset/b4441c3600013e07688cb85f41936971a26b00fc.png";
-import imgUx7 from "figma:asset/493b08cb1dfdf4b7f3560a1360210a8d41dcd463.png";
-import imgUx8 from "figma:asset/47ef43ef8f975472b72131b51e4d0a3f4b1a6432.png";
 
 // Translations object
 const translations = {
@@ -99,9 +95,9 @@ export default function HomePage() {
   const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
   
   // Animation keys for each icon
-  const [readMeRightAnimKey, setReadMeRightAnimKey] = useState(0);
   const [breakTheFrameAnimKey, setBreakTheFrameAnimKey] = useState(0);
   const [lynchUniverseAnimKey, setLynchUniverseAnimKey] = useState(0);
+  const [GroteskaAnimKey, setGroteskaAnimKey] = useState(0);
   const [TrashtourAnimKey, setTrashtourAnimKey] = useState(0);
   const [beatBitsAnimKey, setBeatBitsAnimKey] = useState(0);
   const [InfinitoGoAnimKey, setInfinitoGoAnimKey] = useState(0);
@@ -130,9 +126,9 @@ export default function HomePage() {
 
   // Map project IDs to images
   const projectImages: { [key: string]: string } = {
-    'ux-4': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/readme.gif?raw=true',
     'ux-4b': 'https://raw.githubusercontent.com/tarditonotarde/IMAGES_REPO/refs/heads/main/public/assets/IMAGES/MAIN-PORT/break.gif',
     'ux-4c': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/lynch.gif?raw=true',
+    'ux-4d': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/groteska.gif?raw=true',
     'ux-5': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/trash-ber.gif?raw=true',
     'ux-6': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/beatbits.gif?raw=true',
     'ux-7': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/infinito.gif?raw=true',
@@ -738,6 +734,35 @@ export default function HomePage() {
                 </p>
               </motion.div>
 
+              {/* Groteska Store */}
+              <motion.div 
+                className="flex items-center gap-4 cursor-pointer group"
+                onMouseEnter={() => {
+                  setGroteskaAnimKey(prev => prev + 1);
+                  setHoveredProject('ux-4d');
+                  generateRandomPosition();
+                }}
+                onMouseLeave={() => setHoveredProject(null)}
+                onClick={() => navigate('/case/Groteska')}
+                variants={projectVariants}
+              >
+                <div className="w-[24px] h-[27px]">
+                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 28">
+                    <path 
+                      key={GroteskaAnimKey}
+                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
+                      d={svgPaths.p19ff1980} 
+                      stroke={colors.text}
+                      strokeLinecap="round" 
+                      strokeWidth="0.5" 
+                    />
+                  </svg>
+                </div>
+                <p className="text-[24px] tracking-[-0.72px] transition-colors group-hover:!text-[#8B8B8B]" style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontVariationSettings: "'wdth' 100", color: colors.text }}>
+                  Groteska Store
+                </p>
+              </motion.div>
+
               {/* Break the Frame */}
               <motion.div 
                 className="flex items-center gap-4 cursor-pointer group"
@@ -764,35 +789,6 @@ export default function HomePage() {
                 </div>
                 <p className="text-[24px] tracking-[-0.72px] transition-colors group-hover:!text-[#8B8B8B]" style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontVariationSettings: "'wdth' 100", color: colors.text }}>
                   Break the Frame App
-                </p>
-              </motion.div>
-
-              {/* Read Me Right! */}
-              <motion.div 
-                className="flex items-center gap-4 cursor-pointer group"
-                onMouseEnter={() => {
-                  setReadMeRightAnimKey(prev => prev + 1);
-                  setHoveredProject('ux-4');
-                  generateRandomPosition();
-                }}
-                onMouseLeave={() => setHoveredProject(null)}
-                onClick={() => navigate('/case/read-me-right')}
-                variants={projectVariants}
-              >
-                <div className="w-[24px] h-[27px]">
-                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 28">
-                    <path 
-                      key={readMeRightAnimKey}
-                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPaths.p19ff1980} 
-                      stroke={colors.text}
-                      strokeLinecap="round" 
-                      strokeWidth="0.5" 
-                    />
-                  </svg>
-                </div>
-                <p className="text-[24px] tracking-[-0.72px] transition-colors group-hover:!text-[#8B8B8B]" style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontVariationSettings: "'wdth' 100", color: colors.text }}>
-                  Read Me Right! Feature
                 </p>
               </motion.div>
 

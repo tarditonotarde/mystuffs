@@ -96,6 +96,7 @@ export default function WorksPage() {
     { id: 'Office Apocalypse', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/office.gif?raw=true', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
     { id: 'Read Me Right!', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/readme.gif?raw=true', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
     { id: 'LynchUniverse', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/lynch.gif?raw=true', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
+    { id: 'Groteska', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/groteska.gif?raw=true', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
     { id: 'Break the Frame', image: 'https://raw.githubusercontent.com/tarditonotarde/IMAGES_REPO/refs/heads/main/public/assets/IMAGES/MAIN-PORT/break.gif', categories: ['playground', 'ux/ui'], className: 'w-[100px] h-[100px]' },
     { id: 'Hertaverse', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/hertaverse.gif?raw=true', categories: ['branding'], className: 'w-[100px] h-[100px]' },
     { id: 'Infamia Museum', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/infamia.gif?raw=true', categories: ['ux/ui'], className: 'w-[100px] h-[100px]' },
@@ -142,6 +143,7 @@ export default function WorksPage() {
     'Office Apocalypse': svgPaths.p19ff1980,
     'Read Me Right!': svgPaths.p19ff1980,
     'LynchUniverse': svgPaths.p19ff1980,
+    'Groteska': svgPaths.p1da95340,
     'Break the Frame': svgPaths.p19ff1980,
     'Hertaverse': svgPaths.p2c26bdc0,
     'Infamia Museum': svgPaths.p30b01d80,
@@ -361,6 +363,8 @@ export default function WorksPage() {
       'Read Me Right!': '/case/read-me-right',
       'Break the Frame': '/case/break-the-frame',
       'LynchUniverse': '/case/lynch-universe',
+      'Groteska': '/case/groteska',
+
       // Agregar más rutas aquí cuando estén disponibles
     };
 
