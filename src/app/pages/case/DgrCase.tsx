@@ -1332,7 +1332,7 @@ interaction.
 
             <ArrowButton
               text="next project"
-              onClick={() => navigate(getNextProjectRoute('DGR Professional'))}
+              onClick={() => navigate(getNextProjectRoute('Dgr Professional'))}
               direction="right"
               svgPaths={svgPathsArrow}
             />

@@ -118,7 +118,7 @@ export default function WorksPage() {
     { id: 'Letrarte Ediciones', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/letrarte.gif?raw=true', categories: ['branding', 'editorial', 'art & culture'], className: 'w-[100px] h-[100px]' },
     { id: 'Cuarta Estación Circus', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/cuarta-estacion.gif?raw=true', categories: ['branding', 'art & culture'], className: 'w-[100px] h-[100px]' },
     { id: 'Cirkubrick', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/cirkubrick.gif?raw=true', categories: ['art & culture'], className: 'w-[100px] h-[100px]' },
-    { id: 'DGR Professional', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/dgr.gif?raw=true', categories: ['ux/ui', 'branding'], className: 'w-[100px] h-[100px]' },
+    { id: 'Dgr Professional', image: 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/dgr.gif?raw=true', categories: ['ux/ui', 'branding'], className: 'w-[100px] h-[100px]' },
 
   ];
 
@@ -167,7 +167,7 @@ export default function WorksPage() {
     'Letrarte Ediciones': svgPaths.p35507900,
     'Cuarta Estación Circus': svgPaths.p2c26bdc0,
     'Cirkubrick': svgPaths.p30b01d80,
-    'DGR Professional': svgPaths.p1da95340,
+    'Dgr Professional': svgPaths.p1da95340,
   };
 
   // Generar posiciones aleatorias para las imágenes
@@ -340,7 +340,7 @@ export default function WorksPage() {
       'Beatbits': '/case/beatbits',
       'Chrono-go': '/case/chronogo',
       'Herta Security': '/case/herta-security',
-       'DGR Professional': '/case/dgr',
+       'Dgr Professional': '/case/dgr',
       'SynapHelmet': '/case/synaphelmet',
       'Countify': '/case/countify',
       'Infamia Museum': '/case/infamia-museum',

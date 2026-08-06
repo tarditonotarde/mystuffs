@@ -93,7 +93,7 @@ export default function HomePage() {
   const [backToTopAnimKey, setBackToTopAnimKey] = useState(0);
   const [isFunnyMode, setIsFunnyMode] = useState(false);
   const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
-  
+
   // Animation keys for each icon
   const [breakTheFrameAnimKey, setBreakTheFrameAnimKey] = useState(0);
   const [lynchUniverseAnimKey, setLynchUniverseAnimKey] = useState(0);
@@ -137,8 +137,8 @@ export default function HomePage() {
 
   // Animation variants - OPTIMIZED FOR PERFORMANCE
 
-const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
-const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
+  const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
+  const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -152,12 +152,12 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
   };
 
   const sectionVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 20
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.35,
@@ -167,12 +167,12 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
   };
 
   const itemVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 10
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.25,
@@ -182,12 +182,12 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
   };
 
   const projectVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       x: -15
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
       transition: {
         duration: 0.25,
@@ -197,12 +197,12 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
   };
 
   const buttonVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0.95
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
       transition: {
         duration: 0.3,
@@ -212,12 +212,12 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
   };
 
   const socialButtonVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       x: 15
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
       transition: {
         duration: 0.25,
@@ -227,10 +227,10 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
   };
 
   const dividerVariants = {
-    hidden: { 
+    hidden: {
       scaleX: 0
     },
-    visible: { 
+    visible: {
       scaleX: 1,
       transition: {
         duration: 0.4,
@@ -246,17 +246,17 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
     const maxY = window.innerHeight - 200;
     const minX = 100;
     const minY = 100;
-    
+
     setImagePosition({
       x: Math.random() * (maxX - minX) + minX,
       y: Math.random() * (maxY - minY) + minY
     });
   };
-  
+
   // Typing animation for hero section
   useEffect(() => {
     const currentWord = words[wordIndex];
-    
+
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         // Escribiendo
@@ -278,14 +278,14 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
         }
       }
     }, isDeleting ? 50 : 100); // Borrar más rápido que escribir
-    
+
     return () => clearTimeout(timeout);
   }, [currentText, isDeleting, wordIndex, words]);
 
   // Typing animation for "it's me" section
   useEffect(() => {
     const currentWord = itsmeWords[itsmeWordIndex];
-    
+
     const timeout = setTimeout(() => {
       if (!itsmeIsDeleting) {
         // Escribiendo
@@ -306,7 +306,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
         }
       }
     }, itsmeIsDeleting ? 50 : 100);
-    
+
     return () => clearTimeout(timeout);
   }, [itsmeText, itsmeIsDeleting, itsmeWordIndex, itsmeWords]);
 
@@ -342,13 +342,13 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
     <div className="min-h-screen w-full relative overflow-x-hidden transition-colors duration-300" style={{ backgroundColor: colors.bg }}>
       {/* Container with max width and centered */}
       <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16">
-        
+
         {/* Hero Section */}
         <section className="py-12 md:py-20 relative min-h-[85vh] max-h-[85vh] flex items-center justify-end">
           {/* Header Icons - Fixed sticky position at top left */}
           <div className="fixed top-4 left-6 md:left-12 lg:left-16 flex items-center gap-4 z-50">
             {/* Theme Toggle Icon */}
-            <button 
+            <button
               className="w-[36px] h-[36px] transition-colors [&_path]:hover:fill-[#8B8B8B]"
               aria-label="Toggle theme"
               onClick={toggleTheme}
@@ -381,9 +381,9 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                 </svg>
               )}
             </button>
-            
+
             {/* Smile Icon */}
-            <button 
+            <button
               className="w-[22px] h-[22px] transition-colors [&_path]:hover:fill-[#8B8B8B]"
               aria-label="Toggle funny mode"
               onClick={() => setIsFunnyMode(!isFunnyMode)}
@@ -397,7 +397,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
             <div className="flex items-center gap-2">
               <button
                 className="text-[14px] tracking-[-0.42px] transition-colors hover:!text-[#8B8B8B]"
-                style={{ 
+                style={{
                   fontFamily: 'Instrument Sans, sans-serif',
                   fontVariationSettings: "'wdth' 100",
                   color: colors.text
@@ -432,17 +432,17 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
           </div>
 
           {/* Circle graphic - positioned at top right, becomes menu button on scroll */}
-          <div 
+          <div
             className="relative"
             onMouseLeave={() => {
               if (isScrolled) setIsMenuOpen(false);
             }}
           >
-            <button 
+            <button
               className={`
                 transition-all duration-500 ease-in-out group
-                ${isScrolled 
-                  ? 'fixed top-4 right-6 md:right-12 lg:right-16 z-50 w-[80px] h-[64px] cursor-pointer' 
+                ${isScrolled
+                  ? 'fixed top-4 right-6 md:right-12 lg:right-16 z-50 w-[80px] h-[64px] cursor-pointer'
                   : 'w-[247px] h-[196px] mb-8 cursor-default'
                 }
               `}
@@ -464,11 +464,11 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
 
             {/* Dropdown Menu */}
             {isMenuOpen && (
-              <div 
+              <div
                 className={`
                   absolute shadow-lg transition-colors duration-300
-                  ${isScrolled 
-                    ? 'fixed top-[76px] z-50 left-1/2 -translate-x-1/2' 
+                  ${isScrolled
+                    ? 'fixed top-[76px] z-50 left-1/2 -translate-x-1/2'
                     : 'top-full right-0 mt-2'
                   }
                 `}
@@ -489,8 +489,8 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                     className="px-6 py-1 text-left text-[14px] tracking-[-0.42px] transition-colors whitespace-nowrap"
-                    style={{ 
-                      fontFamily: 'Instrument Sans, sans-serif', 
+                    style={{
+                      fontFamily: 'Instrument Sans, sans-serif',
                       fontVariationSettings: "'wdth' 100",
                       color: colors.text,
                       borderBottomWidth: '1px',
@@ -511,14 +511,14 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                   <button
                     onClick={() => {
                       const sections = document.querySelectorAll('section');
-                      const myWorkSection = Array.from(sections).find(section => 
+                      const myWorkSection = Array.from(sections).find(section =>
                         section.querySelector('h2')?.textContent === t.myWork
                       );
                       myWorkSection?.scrollIntoView({ behavior: 'smooth' });
                     }}
                     className="px-6 py-1 text-left text-[14px] tracking-[-0.42px] transition-colors whitespace-nowrap"
-                    style={{ 
-                      fontFamily: 'Instrument Sans, sans-serif', 
+                    style={{
+                      fontFamily: 'Instrument Sans, sans-serif',
                       fontVariationSettings: "'wdth' 100",
                       color: colors.text,
                       borderBottomWidth: '1px',
@@ -541,8 +541,8 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                       navigate('/works');
                     }}
                     className="px-6 py-1 text-left text-[14px] tracking-[-0.42px] transition-colors whitespace-nowrap"
-                    style={{ 
-                      fontFamily: 'Instrument Sans, sans-serif', 
+                    style={{
+                      fontFamily: 'Instrument Sans, sans-serif',
                       fontVariationSettings: "'wdth' 100",
                       color: colors.text,
                       borderBottomWidth: '1px',
@@ -563,14 +563,14 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                   <button
                     onClick={() => {
                       const sections = document.querySelectorAll('section');
-                      const itsMeSection = Array.from(sections).find(section => 
+                      const itsMeSection = Array.from(sections).find(section =>
                         section.querySelector('h2')?.textContent === t.itsMe
                       );
                       itsMeSection?.scrollIntoView({ behavior: 'smooth' });
                     }}
                     className="px-6 py-1 text-left text-[14px] tracking-[-0.42px] transition-colors whitespace-nowrap"
-                    style={{ 
-                      fontFamily: 'Instrument Sans, sans-serif', 
+                    style={{
+                      fontFamily: 'Instrument Sans, sans-serif',
                       fontVariationSettings: "'wdth' 100",
                       color: colors.text,
                       borderBottomWidth: '1px',
@@ -591,14 +591,14 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                   <button
                     onClick={() => {
                       const sections = document.querySelectorAll('section');
-                      const contactSection = Array.from(sections).find(section => 
+                      const contactSection = Array.from(sections).find(section =>
                         section.querySelector('h2')?.textContent === t.contact
                       );
                       contactSection?.scrollIntoView({ behavior: 'smooth' });
                     }}
                     className="px-6 py-1 text-left text-[14px] tracking-[-0.42px] transition-colors whitespace-nowrap"
-                    style={{ 
-                      fontFamily: 'Instrument Sans, sans-serif', 
+                    style={{
+                      fontFamily: 'Instrument Sans, sans-serif',
                       fontVariationSettings: "'wdth' 100",
                       color: colors.text
                     }}
@@ -620,7 +620,8 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
         </section>
 
         {/* Add keyframes for cursor blink */}
-        <style dangerouslySetInnerHTML={{ __html: `
+        <style dangerouslySetInnerHTML={{
+          __html: `
           @keyframes blink {
             0%, 49% { opacity: 1; }
             50%, 100% { opacity: 0; }
@@ -657,8 +658,8 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
         `}} />
 
         {/* Divider */}
-        <motion.div 
-          className="w-full h-px transition-colors duration-300 mb-2 mt-8 md:mb-3 md:mt-12" 
+        <motion.div
+          className="w-full h-px transition-colors duration-300 mb-2 mt-8 md:mb-3 md:mt-12"
           style={{ backgroundColor: colors.text }}
           initial="hidden"
           whileInView="visible"
@@ -667,7 +668,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
         />
 
         {/* My Work Section */}
-        <motion.section 
+        <motion.section
           className="min-h-[85vh] max-h-[85vh] flex flex-col justify-between relative p-[0px]"
           initial="hidden"
           whileInView="visible"
@@ -675,8 +676,8 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
           variants={sectionVariants}
         >
           <motion.div variants={containerVariants}>
-            <motion.h2 
-              className="text-[24px] tracking-[-1.2px] mb-8 transition-colors duration-300" 
+            <motion.h2
+              className="text-[24px] tracking-[-1.2px] mb-8 transition-colors duration-300"
               style={{ fontFamily: 'Instrument Sans, sans-serif', fontVariationSettings: "'wdth' 100", color: colors.text }}
               variants={itemVariants}
             >
@@ -686,16 +687,16 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
 
           {/* Floating image preview */}
           {hoveredProject && (
-            <div 
+            <div
               className="hidden lg:block fixed pointer-events-none z-10 transition-opacity duration-300"
-              style={{ 
-                left: `${imagePosition.x}px`, 
+              style={{
+                left: `${imagePosition.x}px`,
                 top: `${imagePosition.y}px`,
               }}
             >
               <div className="w-[100px] h-[100px]">
-                <img 
-                  src={projectImages[hoveredProject]} 
+                <img
+                  src={projectImages[hoveredProject]}
                   alt={`${hoveredProject} preview`}
                   className="w-full h-full object-cover"
                 />
@@ -703,14 +704,14 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
             </div>
           )}
 
-          <motion.div 
+          <motion.div
             className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-end justify-end lg:justify-end p-[0px]"
             variants={containerVariants}
           >
             {/* Featured Projects - stacked vertically */}
             <motion.div className="w-fit flex flex-col gap-3" variants={containerVariants}>
               {/* Lynch Universe Stream */}
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-4 cursor-pointer group"
                 onMouseEnter={() => {
                   setLynchUniverseAnimKey(prev => prev + 1);
@@ -723,13 +724,13 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
               >
                 <div className="w-[24px] h-[24px]">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 25">
-                    <path 
+                    <path
                       key={lynchUniverseAnimKey}
-                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPathsIcons.p1da95340} 
+                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                      d={svgPathsIcons.p1da95340}
                       stroke={colors.text}
-                      strokeLinecap="round" 
-                      strokeWidth="0.5" 
+                      strokeLinecap="round"
+                      strokeWidth="0.5"
                     />
                   </svg>
                 </div>
@@ -739,7 +740,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
               </motion.div>
 
               {/* Groteska Store */}
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-4 cursor-pointer group"
                 onMouseEnter={() => {
                   setGroteskaAnimKey(prev => prev + 1);
@@ -752,13 +753,13 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
               >
                 <div className="w-[24px] h-[27px]">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 28">
-                    <path 
+                    <path
                       key={GroteskaAnimKey}
-                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPaths.p19ff1980} 
+                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                      d={svgPaths.p19ff1980}
                       stroke={colors.text}
-                      strokeLinecap="round" 
-                      strokeWidth="0.5" 
+                      strokeLinecap="round"
+                      strokeWidth="0.5"
                     />
                   </svg>
                 </div>
@@ -767,8 +768,8 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                 </p>
               </motion.div>
 
-                            {/* DGR Professional */}
-              <motion.div 
+              {/* DGR Professional */}
+              <motion.div
                 className="flex items-center gap-4 cursor-pointer group"
                 onMouseEnter={() => {
                   setDgrAnimKey(prev => prev + 1);
@@ -776,18 +777,18 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                   generateRandomPosition();
                 }}
                 onMouseLeave={() => setHoveredProject(null)}
-                onClick={() => navigate('/case/dgr-professional')}
+                onClick={() => navigate('/case/dgr')}
                 variants={projectVariants}
               >
                 <div className="w-[24px] h-[24px]">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 25">
-                    <path 
+                    <path
                       key={dgrAnimKey}
-                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPathsIcons.p1da95340} 
+                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                      d={svgPathsIcons.p1da95340}
                       stroke={colors.text}
-                      strokeLinecap="round" 
-                      strokeWidth="0.5" 
+                      strokeLinecap="round"
+                      strokeWidth="0.5"
                     />
                   </svg>
                 </div>
@@ -797,7 +798,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
               </motion.div>
 
               {/* Break the Frame */}
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-4 cursor-pointer group"
                 onMouseEnter={() => {
                   setBreakTheFrameAnimKey(prev => prev + 1);
@@ -810,13 +811,13 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
               >
                 <div className="w-[24px] h-[23px]">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 24">
-                    <path 
+                    <path
                       key={breakTheFrameAnimKey}
-                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPathsIcons.p30b01d80} 
+                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                      d={svgPathsIcons.p30b01d80}
                       stroke={colors.text}
-                      strokeLinecap="round" 
-                      strokeWidth="0.5" 
+                      strokeLinecap="round"
+                      strokeWidth="0.5"
                     />
                   </svg>
                 </div>
@@ -826,7 +827,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
               </motion.div>
 
               {/* Trashtour */}
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-4 cursor-pointer group"
                 onMouseEnter={() => {
                   setTrashtourAnimKey(prev => prev + 1);
@@ -839,13 +840,13 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
               >
                 <div className="w-[24px] h-[20px]">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 21">
-                    <path 
+                    <path
                       key={TrashtourAnimKey}
-                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPathsIcons.p35507900} 
+                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                      d={svgPathsIcons.p35507900}
                       stroke={colors.text}
-                      strokeLinecap="round" 
-                      strokeWidth="0.5" 
+                      strokeLinecap="round"
+                      strokeWidth="0.5"
                     />
                   </svg>
                 </div>
@@ -855,7 +856,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
               </motion.div>
 
               {/* BeatBits */}
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-4 cursor-pointer group"
                 onMouseEnter={() => {
                   setBeatBitsAnimKey(prev => prev + 1);
@@ -868,23 +869,23 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
               >
                 <div className="w-[24px] h-[22px]">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 23">
-                    <path 
+                    <path
                       key={beatBitsAnimKey}
-                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPathsIcons.p2c26bdc0} 
+                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                      d={svgPathsIcons.p2c26bdc0}
                       stroke={colors.text}
-                      strokeLinecap="round" 
-                      strokeWidth="0.5" 
+                      strokeLinecap="round"
+                      strokeWidth="0.5"
                     />
                   </svg>
                 </div>
                 <p className="text-[24px] tracking-[-0.72px] transition-colors group-hover:!text-[#8B8B8B]" style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontVariationSettings: "'wdth' 100", color: colors.text }}>
-                  BeatBits App  
+                  BeatBits App
                 </p>
               </motion.div>
 
               {/* Infinito-go */}
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-4 cursor-pointer group"
                 onMouseEnter={() => {
                   setInfinitoGoAnimKey(prev => prev + 1);
@@ -897,13 +898,13 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
               >
                 <div className="w-[24px] h-[23px]">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 24">
-                    <path 
+                    <path
                       key={InfinitoGoAnimKey}
-                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPathsIcons.p30b01d80} 
+                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                      d={svgPathsIcons.p30b01d80}
                       stroke={colors.text}
-                      strokeLinecap="round" 
-                      strokeWidth="0.5" 
+                      strokeLinecap="round"
+                      strokeWidth="0.5"
                     />
                   </svg>
                 </div>
@@ -914,7 +915,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
 
 
               {/* See More Button */}
-              <motion.button 
+              <motion.button
                 onClick={() => navigate('/works')}
                 className="flex items-center gap-3 group cursor-pointer mt-4 h-[52px] self-end"
                 onMouseEnter={() => setSeeMoreAnimKey(prev => prev + 1)}
@@ -926,19 +927,19 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                 <div className="w-[52px] h-[52px] transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-translate-x-2 group-hover:rotate-90">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 53 53">
                     <g>
-                      <path 
+                      <path
                         key={`see-more-arrow1-${seeMoreAnimKey}`}
-                        className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                        d={svgPaths.p3ecd4f00} 
+                        className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                        d={svgPaths.p3ecd4f00}
                         stroke={colors.text}
-                        strokeWidth="1.5" 
+                        strokeWidth="1.5"
                       />
-                      <path 
+                      <path
                         key={`see-more-arrow2-${seeMoreAnimKey}`}
-                        className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                        d={svgPaths.p8aff500} 
+                        className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                        d={svgPaths.p8aff500}
                         stroke={colors.text}
-                        strokeWidth="1.5" 
+                        strokeWidth="1.5"
                       />
                     </g>
                   </svg>
@@ -949,8 +950,8 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
         </motion.section>
 
         {/* Divider */}
-        <motion.div 
-          className="w-full h-px transition-colors duration-300 mb-2 mt-8 md:mb-3 md:mt-12" 
+        <motion.div
+          className="w-full h-px transition-colors duration-300 mb-2 mt-8 md:mb-3 md:mt-12"
           style={{ backgroundColor: colors.text }}
           initial="hidden"
           whileInView="visible"
@@ -959,7 +960,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
         />
 
         {/* It's me Section */}
-        <motion.section 
+        <motion.section
           className="min-h-[85vh] max-h-[85vh] flex flex-col justify-between p-[0px]"
           initial="hidden"
           whileInView="visible"
@@ -967,8 +968,8 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
           variants={sectionVariants}
         >
           <motion.div variants={containerVariants}>
-            <motion.h2 
-              className="font-['Instrument_Sans:Regular',sans-serif] font-normal text-[24px] tracking-[-1.2px] mb-8 transition-colors duration-300" 
+            <motion.h2
+              className="font-['Instrument_Sans:Regular',sans-serif] font-normal text-[24px] tracking-[-1.2px] mb-8 transition-colors duration-300"
               style={{ fontVariationSettings: "'wdth' 100", color: colors.text }}
               variants={itemVariants}
             >
@@ -979,7 +980,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
           {/* Video placeholder negro - Reemplaza con tu video de Canva */}
           <motion.div className="flex justify-start" variants={itemVariants}>
             <div className="w-[100px] h-[100px]">
-              <img 
+              <img
                 src="https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/VIDEOS/me-video.gif?raw=true"
                 alt="It's me section animation"
                 className="w-full h-full object-cover"
@@ -987,7 +988,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-end"
             variants={itemVariants}
           >
@@ -1010,7 +1011,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
             </div>
 
             <div className="lg:w-auto lg:ml-auto">
-              <motion.button 
+              <motion.button
                 className="flex items-center gap-3 group cursor-pointer h-[52px]"
                 onMouseEnter={() => setResumeAnimKey(prev => prev + 1)}
                 onClick={() => window.open('https://drive.google.com/file/d/1BSFvcdQJjesg4U2r8i4tGjXFQhhCA5L5/view?usp=sharing', '_blank')}
@@ -1022,19 +1023,19 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                 <div className="w-[52px] h-[52px] transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-translate-x-2 group-hover:rotate-90">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 53 53">
                     <g>
-                      <path 
+                      <path
                         key={`resume-arrow1-${resumeAnimKey}`}
-                        className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                        d={svgPaths.p3ecd4f00} 
+                        className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                        d={svgPaths.p3ecd4f00}
                         stroke={colors.text}
-                        strokeWidth="1.5" 
+                        strokeWidth="1.5"
                       />
-                      <path 
+                      <path
                         key={`resume-arrow2-${resumeAnimKey}`}
-                        className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                        d={svgPaths.p8aff500} 
+                        className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                        d={svgPaths.p8aff500}
                         stroke={colors.text}
-                        strokeWidth="1.5" 
+                        strokeWidth="1.5"
                       />
                     </g>
                   </svg>
@@ -1048,12 +1049,12 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
             <div className="flex whitespace-nowrap animate-marquee">
               <div className="flex">
                 <span className="font-['Instrument_Sans:Light',sans-serif] text-[10px] tracking-[-0.42px] transition-colors duration-300" style={{ fontVariationSettings: "'wdth' 100", color: colors.text }}>
-                  UX RESEARCH ■ USABILITY TESTING ■ PROTOTYPING ■ DESIGN SYSTEMS ■ ACCESSIBILITY (WCAG) ■ VISUAL STORYTELLING ■ BRANDING ■ TYPOGRAPHY ■ FIGMA / ADOBE XD ■ ILLUSTRATOR / PHOTOSHOP ■ INDESIGN ■ AFTER EFFECTS ■ GIT | GITHUB ■ VISUAL STUDIO CODE ■ HTML5 / CSS / ANGULAR ■ WORDPRESS ■ 
+                  UX RESEARCH ■ USABILITY TESTING ■ PROTOTYPING ■ DESIGN SYSTEMS ■ ACCESSIBILITY (WCAG) ■ VISUAL STORYTELLING ■ BRANDING ■ TYPOGRAPHY ■ FIGMA / ADOBE XD ■ ILLUSTRATOR / PHOTOSHOP ■ INDESIGN ■ AFTER EFFECTS ■ GIT | GITHUB ■ VISUAL STUDIO CODE ■ HTML5 / CSS / ANGULAR ■ WORDPRESS ■
                 </span>
               </div>
               <div className="flex">
                 <span className="font-['Instrument_Sans:Light',sans-serif] text-[10px] tracking-[-0.42px] transition-colors duration-300" style={{ fontVariationSettings: "'wdth' 100", color: colors.text }}>
-                  UX RESEARCH ■ USABILITY TESTING ■ PROTOTYPING ■ DESIGN SYSTEMS ■ ACCESSIBILITY (WCAG) ■ VISUAL STORYTELLING ■ BRANDING ■ TYPOGRAPHY ■ FIGMA / ADOBE XD ■ ILLUSTRATOR / PHOTOSHOP ■ INDESIGN ■ AFTER EFFECTS ■ GIT | GITHUB ■ VISUAL STUDIO CODE ■ HTML5 / CSS / ANGULAR ■ WORDPRESS ■ 
+                  UX RESEARCH ■ USABILITY TESTING ■ PROTOTYPING ■ DESIGN SYSTEMS ■ ACCESSIBILITY (WCAG) ■ VISUAL STORYTELLING ■ BRANDING ■ TYPOGRAPHY ■ FIGMA / ADOBE XD ■ ILLUSTRATOR / PHOTOSHOP ■ INDESIGN ■ AFTER EFFECTS ■ GIT | GITHUB ■ VISUAL STUDIO CODE ■ HTML5 / CSS / ANGULAR ■ WORDPRESS ■
                 </span>
               </div>
             </div>
@@ -1061,8 +1062,8 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
         </motion.section>
 
         {/* Divider */}
-        <motion.div 
-          className="w-full h-px transition-colors duration-300 mb-2 mt-8 md:mb-3 md:mt-12" 
+        <motion.div
+          className="w-full h-px transition-colors duration-300 mb-2 mt-8 md:mb-3 md:mt-12"
           style={{ backgroundColor: colors.text }}
           initial="hidden"
           whileInView="visible"
@@ -1071,7 +1072,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
         />
 
         {/* Contact Section */}
-        <motion.section 
+        <motion.section
           className="min-h-[85vh] max-h-[85vh] p-[0px] flex flex-col justify-between"
           initial="hidden"
           whileInView="visible"
@@ -1079,8 +1080,8 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
           variants={sectionVariants}
         >
           <motion.div variants={containerVariants}>
-            <motion.h2 
-              className="font-['Instrument_Sans:Regular',sans-serif] font-normal text-[24px] tracking-[-1.2px] mb-8 transition-colors duration-300" 
+            <motion.h2
+              className="font-['Instrument_Sans:Regular',sans-serif] font-normal text-[24px] tracking-[-1.2px] mb-8 transition-colors duration-300"
               style={{ fontVariationSettings: "'wdth' 100", color: colors.text }}
               variants={itemVariants}
             >
@@ -1091,7 +1092,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
           {/* Video placeholder negro */}
           <motion.div className="flex justify-center" variants={itemVariants}>
             <div className="w-[100px] h-[100px]">
-              <img 
+              <img
                 src="https://raw.githubusercontent.com/tarditonotarde/IMAGES_REPO/refs/heads/main/public/assets/VIDEOS/contact-video.gif"
                 alt="Contact section animation"
                 className="w-full h-full object-cover"
@@ -1111,7 +1112,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
             <div className="lg:w-[400px]">
               <motion.div className="space-y-4 flex flex-col items-end" variants={containerVariants}>
                 {/* Spotify Button */}
-                <motion.button 
+                <motion.button
                   className="flex items-center gap-3 group cursor-pointer h-[52px]"
                   onMouseEnter={() => setContactSpotifyAnimKey(prev => prev + 1)}
                   onClick={() => window.open('https://open.spotify.com/playlist/385mgVewUPy5Hl6GcCI4qs?si=L75FZDSGRUmFXmrMGrRRMw', '_blank')}
@@ -1123,19 +1124,19 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                   <div className="w-[52px] h-[52px] transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-translate-x-2 group-hover:rotate-90">
                     <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 53 53">
                       <g>
-                        <path 
+                        <path
                           key={`contact-spotify-arrow1-${contactSpotifyAnimKey}`}
-                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                          d={svgPaths.p3ecd4f00} 
+                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                          d={svgPaths.p3ecd4f00}
                           stroke={colors.text}
-                          strokeWidth="1.5" 
+                          strokeWidth="1.5"
                         />
-                        <path 
+                        <path
                           key={`contact-spotify-arrow2-${contactSpotifyAnimKey}`}
-                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                          d={svgPaths.p8aff500} 
+                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                          d={svgPaths.p8aff500}
                           stroke={colors.text}
-                          strokeWidth="1.5" 
+                          strokeWidth="1.5"
                         />
                       </g>
                     </svg>
@@ -1143,7 +1144,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                 </motion.button>
 
                 {/* LinkedIn Button */}
-                <motion.button 
+                <motion.button
                   className="flex items-center gap-3 group cursor-pointer h-[52px]"
                   onMouseEnter={() => setContactLinkedInAnimKey(prev => prev + 1)}
                   onClick={() => window.open('https://www.linkedin.com/in/claudiatardito/', '_blank')}
@@ -1155,19 +1156,19 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                   <div className="w-[52px] h-[52px] transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-translate-x-2 group-hover:rotate-90">
                     <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 53 53">
                       <g>
-                        <path 
+                        <path
                           key={`contact-linkedin-arrow1-${contactLinkedInAnimKey}`}
-                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                          d={svgPaths.p3ecd4f00} 
+                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                          d={svgPaths.p3ecd4f00}
                           stroke={colors.text}
-                          strokeWidth="1.5" 
+                          strokeWidth="1.5"
                         />
-                        <path 
+                        <path
                           key={`contact-linkedin-arrow2-${contactLinkedInAnimKey}`}
-                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                          d={svgPaths.p8aff500} 
+                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                          d={svgPaths.p8aff500}
                           stroke={colors.text}
-                          strokeWidth="1.5" 
+                          strokeWidth="1.5"
                         />
                       </g>
                     </svg>
@@ -1175,7 +1176,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                 </motion.button>
 
                 {/* Instagram Button */}
-                <motion.button 
+                <motion.button
                   className="flex items-center gap-3 group cursor-pointer h-[52px]"
                   onMouseEnter={() => setContactInstagramAnimKey(prev => prev + 1)}
                   onClick={() => window.open('https://www.instagram.com/hereismymess/', '_blank')}
@@ -1187,19 +1188,19 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                   <div className="w-[52px] h-[52px] transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-translate-x-2 group-hover:rotate-90">
                     <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 53 53">
                       <g>
-                        <path 
+                        <path
                           key={`contact-instagram-arrow1-${contactInstagramAnimKey}`}
-                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                          d={svgPaths.p3ecd4f00} 
+                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                          d={svgPaths.p3ecd4f00}
                           stroke={colors.text}
-                          strokeWidth="1.5" 
+                          strokeWidth="1.5"
                         />
-                        <path 
+                        <path
                           key={`contact-instagram-arrow2-${contactInstagramAnimKey}`}
-                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                          d={svgPaths.p8aff500} 
+                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                          d={svgPaths.p8aff500}
                           stroke={colors.text}
-                          strokeWidth="1.5" 
+                          strokeWidth="1.5"
                         />
                       </g>
                     </svg>
@@ -1207,7 +1208,7 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                 </motion.button>
 
                 {/* My Resume Button */}
-                <motion.button 
+                <motion.button
                   className="flex items-center gap-3 group cursor-pointer h-[52px]"
                   onMouseEnter={() => setContactResumeAnimKey(prev => prev + 1)}
                   onClick={() => window.open('https://drive.google.com/file/d/1BSFvcdQJjesg4U2r8i4tGjXFQhhCA5L5/view?usp=sharing', '_blank')}
@@ -1219,19 +1220,19 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
                   <div className="w-[52px] h-[52px] transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-translate-x-2 group-hover:rotate-90">
                     <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 53 53">
                       <g>
-                        <path 
+                        <path
                           key={`contact-resume-arrow1-${contactResumeAnimKey}`}
-                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                          d={svgPaths.p3ecd4f00} 
+                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                          d={svgPaths.p3ecd4f00}
                           stroke={colors.text}
-                          strokeWidth="1.5" 
+                          strokeWidth="1.5"
                         />
-                        <path 
+                        <path
                           key={`contact-resume-arrow2-${contactResumeAnimKey}`}
-                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                          d={svgPaths.p8aff500} 
+                          className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
+                          d={svgPaths.p8aff500}
                           stroke={colors.text}
-                          strokeWidth="1.5" 
+                          strokeWidth="1.5"
                         />
                       </g>
                     </svg>
@@ -1243,8 +1244,8 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
         </motion.section>
 
         {/* Divider */}
-        <motion.div 
-          className="w-full h-px transition-colors duration-300 mb-2 mt-8 md:mb-3 md:mt-12" 
+        <motion.div
+          className="w-full h-px transition-colors duration-300 mb-2 mt-8 md:mb-3 md:mt-12"
           style={{ backgroundColor: colors.text }}
           initial="hidden"
           whileInView="visible"
@@ -1277,19 +1278,19 @@ const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
           <div className="w-full h-full flex items-center justify-center -rotate-90">
             <svg className="block w-[20px] h-[20px]" fill="none" preserveAspectRatio="none" viewBox="0 0 53 53">
               <g>
-                <path 
+                <path
                   key={`back-to-top-arrow1-${backToTopAnimKey}`}
-                  className="animated-icon-path" 
-                  d={svgPaths.p3ecd4f00} 
+                  className="animated-icon-path"
+                  d={svgPaths.p3ecd4f00}
                   stroke={colors.bg}
-                  strokeWidth="1.5" 
+                  strokeWidth="1.5"
                 />
-                <path 
+                <path
                   key={`back-to-top-arrow2-${backToTopAnimKey}`}
-                  className="animated-icon-path" 
-                  d={svgPaths.p8aff500} 
+                  className="animated-icon-path"
+                  d={svgPaths.p8aff500}
                   stroke={colors.bg}
-                  strokeWidth="1.5" 
+                  strokeWidth="1.5"
                 />
               </g>
             </svg>
