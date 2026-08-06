@@ -11,8 +11,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "types": ["react", "react-dom", "vite/client"]
+    "noEmit": true
   },
   "include": ["src"]
 }
