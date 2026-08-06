@@ -4,6 +4,7 @@ import WorksPage from './pages/WorksPage';
 import BeatBitsCase from './pages/case/BeatBitsCase';
 import ChronogoCase from './pages/case/ChronogoCase';
 import HertaSecurityCase from './pages/case/HertaSecurityCase';
+import DgrCase from './pages/case/DgrCase';
 import MonoBankCase from './pages/case/MonoBankCase';
 import SynapHelmetCase from './pages/case/SynapHelmetCase';
 import CountifyCase from './pages/case/CountifyCase';
@@ -76,6 +77,8 @@ export default function App() {
           <Route path="/case/break-the-frame" element={<BreakTheFrameCase />} />
           <Route path="/case/lynch-universe" element={<LynchUniverseCase />} />
           <Route path="/case/groteska" element={<GroteskaCase />} />
+          <Route path="/case/dgr" element={<DgrCase />} />
+
 
         </Routes>
       </HashRouter>

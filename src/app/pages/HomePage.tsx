@@ -101,7 +101,7 @@ export default function HomePage() {
   const [TrashtourAnimKey, setTrashtourAnimKey] = useState(0);
   const [beatBitsAnimKey, setBeatBitsAnimKey] = useState(0);
   const [InfinitoGoAnimKey, setInfinitoGoAnimKey] = useState(0);
-  const [hertaAnimKey, setHertaAnimKey] = useState(0);
+  const [dgrAnimKey, setDgrAnimKey] = useState(0);
   const [seeMoreAnimKey, setSeeMoreAnimKey] = useState(0);
   const [resumeAnimKey, setResumeAnimKey] = useState(0);
   const [contactSpotifyAnimKey, setContactSpotifyAnimKey] = useState(0);
@@ -132,7 +132,7 @@ export default function HomePage() {
     'ux-5': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/trash-ber.gif?raw=true',
     'ux-6': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/beatbits.gif?raw=true',
     'ux-7': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/infinito.gif?raw=true',
-    'ux-8': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/herta.gif?raw=true',
+    'ux-8': 'https://github.com/tarditonotarde/IMAGES_REPO/blob/main/public/assets/IMAGES/MAIN-PORT/dgr.gif?raw=true',
   };
 
   // Animation variants - OPTIMIZED FOR PERFORMANCE
@@ -763,6 +763,35 @@ export default function HomePage() {
                 </p>
               </motion.div>
 
+                            {/* DGR Professional */}
+              <motion.div 
+                className="flex items-center gap-4 cursor-pointer group"
+                onMouseEnter={() => {
+                  setDgrAnimKey(prev => prev + 1);
+                  setHoveredProject('ux-8');
+                  generateRandomPosition();
+                }}
+                onMouseLeave={() => setHoveredProject(null)}
+                onClick={() => navigate('/case/dgr-professional')}
+                variants={projectVariants}
+              >
+                <div className="w-[24px] h-[24px]">
+                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 25">
+                    <path 
+                      key={dgrAnimKey}
+                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
+                      d={svgPathsIcons.p1da95340} 
+                      stroke={colors.text}
+                      strokeLinecap="round" 
+                      strokeWidth="0.5" 
+                    />
+                  </svg>
+                </div>
+                <p className="text-[24px] tracking-[-0.72px] transition-colors group-hover:!text-[#8B8B8B]" style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontVariationSettings: "'wdth' 100", color: colors.text }}>
+                  DGR Professional
+                </p>
+              </motion.div>
+
               {/* Break the Frame */}
               <motion.div 
                 className="flex items-center gap-4 cursor-pointer group"
@@ -879,34 +908,6 @@ export default function HomePage() {
                 </p>
               </motion.div>
 
-              {/* Herta Security */}
-              <motion.div 
-                className="flex items-center gap-4 cursor-pointer group"
-                onMouseEnter={() => {
-                  setHertaAnimKey(prev => prev + 1);
-                  setHoveredProject('ux-8');
-                  generateRandomPosition();
-                }}
-                onMouseLeave={() => setHoveredProject(null)}
-                onClick={() => navigate('/case/herta-security')}
-                variants={projectVariants}
-              >
-                <div className="w-[24px] h-[24px]">
-                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 25">
-                    <path 
-                      key={hertaAnimKey}
-                      className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors" 
-                      d={svgPathsIcons.p1da95340} 
-                      stroke={colors.text}
-                      strokeLinecap="round" 
-                      strokeWidth="0.5" 
-                    />
-                  </svg>
-                </div>
-                <p className="text-[24px] tracking-[-0.72px] transition-colors group-hover:!text-[#8B8B8B]" style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontVariationSettings: "'wdth' 100", color: colors.text }}>
-                  Herta Security
-                </p>
-              </motion.div>
 
               {/* See More Button */}
               <motion.button 
