@@ -785,7 +785,7 @@ export default function HomePage() {
                     <path
                       key={dgrAnimKey}
                       className="animated-icon-path group-hover:stroke-[#8B8B8B] transition-colors"
-                      d={svgPathsIcons.p1da95340}
+                      d={svgPathsIcons.p2c26bdc0}
                       stroke={colors.text}
                       strokeLinecap="round"
                       strokeWidth="0.5"
