@@ -590,15 +590,7 @@ export default function LynchUniverseCase() {
 
             <br />
 
-            Information Architecture
-
-            <br />
-
             Wireframing
-
-            <br />
-
-            UI Design
 
             <br />
 
@@ -620,9 +612,6 @@ export default function LynchUniverseCase() {
 
             Creative Direction
 
-            <br />
-
-            Content Strategy
           </p>
 
         </div>
@@ -664,15 +653,8 @@ export default function LynchUniverseCase() {
 
             <br />
 
-            Illustrator
+            Weavy
 
-            <br />
-
-            Formspree
-
-            <br />
-
-            Cloudflare
           </p>
 
         </div>
