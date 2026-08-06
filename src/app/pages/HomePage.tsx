@@ -136,6 +136,10 @@ export default function HomePage() {
   };
 
   // Animation variants - OPTIMIZED FOR PERFORMANCE
+
+const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
+const easeBounce: [number, number, number, number] = [0.34, 1.56, 0.64, 1];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -157,7 +161,7 @@ export default function HomePage() {
       y: 0,
       transition: {
         duration: 0.35,
-        ease: [0.25, 0.1, 0.25, 1]
+        ease: ease
       }
     }
   };
@@ -172,7 +176,7 @@ export default function HomePage() {
       y: 0,
       transition: {
         duration: 0.25,
-        ease: [0.25, 0.1, 0.25, 1]
+        ease: ease
       }
     }
   };
@@ -187,7 +191,7 @@ export default function HomePage() {
       x: 0,
       transition: {
         duration: 0.25,
-        ease: [0.25, 0.1, 0.25, 1]
+        ease: ease
       }
     }
   };
@@ -202,7 +206,7 @@ export default function HomePage() {
       scale: 1,
       transition: {
         duration: 0.3,
-        ease: [0.34, 1.56, 0.64, 1]
+        ease: easeBounce
       }
     }
   };
@@ -217,7 +221,7 @@ export default function HomePage() {
       x: 0,
       transition: {
         duration: 0.25,
-        ease: [0.25, 0.1, 0.25, 1]
+        ease: ease
       }
     }
   };
@@ -230,7 +234,7 @@ export default function HomePage() {
       scaleX: 1,
       transition: {
         duration: 0.4,
-        ease: [0.25, 0.1, 0.25, 1]
+        ease: ease
       }
     }
   };
@@ -1006,7 +1010,7 @@ export default function HomePage() {
             </div>
 
             <div className="lg:w-auto lg:ml-auto">
-              <button 
+              <motion.button 
                 className="flex items-center gap-3 group cursor-pointer h-[52px]"
                 onMouseEnter={() => setResumeAnimKey(prev => prev + 1)}
                 onClick={() => window.open('https://drive.google.com/file/d/1BSFvcdQJjesg4U2r8i4tGjXFQhhCA5L5/view?usp=sharing', '_blank')}
@@ -1035,7 +1039,7 @@ export default function HomePage() {
                     </g>
                   </svg>
                 </div>
-              </button>
+              </motion.button>
             </div>
           </motion.div>
 
