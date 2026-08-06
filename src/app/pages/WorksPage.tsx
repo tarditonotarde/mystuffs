@@ -336,23 +336,25 @@ export default function WorksPage() {
   const navigateToCaseStudy = (workId: string) => {
     // Mapeo de IDs a rutas de case study
     const caseStudyRoutes: Record<string, string> = {
-      'MonoBank': '/case/monobank',
-      'Beatbits': '/case/beatbits',
-      'Chrono-go': '/case/chronogo',
-      'Herta Security': '/case/herta-security',
-       'Dgr Professional': '/case/dgr',
-      'SynapHelmet': '/case/synaphelmet',
-      'Countify': '/case/countify',
-      'Infamia Museum': '/case/infamia-museum',
+    
+      'Groteska': '/case/groteska',
+      'LynchUniverse': '/case/lynch-universe',
+      'Dgr Professional': '/case/dgr',
       'Trashtour LDN': '/case/trashtour-ldn',
       'Trashtour BER': '/case/trashtour-ber',
       'Trashtour BCN': '/case/trashtour-bcn',
       'La Olla Común': '/case/la-olla-comun',
+      'Beatbits': '/case/beatbits',
+      'Letrarte Ediciones': '/case/letrarte',
+      'MonoBank': '/case/monobank',
+      'Chrono-go': '/case/chronogo',
+      'Herta Security': '/case/herta-security',
+      'Break the Frame': '/case/break-the-frame',
+      'Infamia Museum': '/case/infamia-museum',
       'Go-home Mag': '/case/go-home-mag',
       'Hertaverse': '/case/hertaverse',
       'Beethoven 2020': '/case/beethoven2020',
       'Mi gato Bolaño': '/case/mi-gato-bolano',
-      'Letrarte Ediciones': '/case/letrarte',
       'FILSA': '/case/filsa',
       'Cuarta Estación Circus': '/case/cuarta-estacion',
       'Cirkubrick': '/case/cirkubrick',
@@ -365,9 +367,9 @@ export default function WorksPage() {
       'Haters gonna hate': '/case/haters-gonna-hate',
       'Mean Bot': '/case/mean-bot',
       'Read Me Right!': '/case/read-me-right',
-      'Break the Frame': '/case/break-the-frame',
-      'LynchUniverse': '/case/lynch-universe',
-      'Groteska': '/case/groteska',
+      'SynapHelmet': '/case/synaphelmet',
+      'Countify': '/case/countify',
+
 
       // Agregar más rutas aquí cuando estén disponibles
     };
