@@ -1,26 +1,28 @@
 // Orden de todos los proyectos del portfolio
 export const projectOrder = [
-  'MonoBank',
-  'Beatbits',
-  'Chrono-go',
-  'Herta Security',
-  'Countify',
-  'Uno Tarot',
-  'Office Apocalypse',
-  'Read Me Right!',
   'Lynch Universe Stream',
   'Groteska',
   'Dgr Professional',
-  'Break the Frame',
-  'Hertaverse',
-  'Infamia Museum',
-  'Haters gonna hate',
+  'Beatbits',
+  'Letrarte Ediciones',
+  'Herta Security',
   'Beethoven 2020',
-  'SynapHelmet',
   'Trashtour BER',
   'Trashtour LDN',
   'Trashtour BCN',
   'La Olla Común',
+  'MonoBank',
+  'Cuarta Estación Circus',
+  'Countify',
+  'Uno Tarot',
+  'Office Apocalypse',
+  'Read Me Right!',
+  'Break the Frame',
+  'Hertaverse',
+  'Infamia Museum',
+  'Chrono-go',
+  'Haters gonna hate',
+  'SynapHelmet',
   'Go-home Mag',
   'Mean Bot',
   'Mi gato Bolaño',
@@ -29,8 +31,6 @@ export const projectOrder = [
   'Guz St.',
   'Sedas Rina María',
   'FILSA',
-  'Letrarte Ediciones',
-  'Cuarta Estación Circus',
   'Cirkubrick',
 ];
 
@@ -77,16 +77,16 @@ export const projectRoutes: Record<string, string> = {
  */
 export function getNextProjectRoute(currentProjectName: string): string {
   const currentIndex = projectOrder.indexOf(currentProjectName);
-  
+
   if (currentIndex === -1) {
     // Si no se encuentra el proyecto, volver a works
     return '/works';
   }
-  
+
   // Navegar circularmente: después del último, volver al primero
   const nextIndex = (currentIndex + 1) % projectOrder.length;
   const nextProjectName = projectOrder[nextIndex];
-  
+
   // Devolver la ruta del siguiente proyecto
   return projectRoutes[nextProjectName] || '/works';
 }
@@ -98,16 +98,16 @@ export function getNextProjectRoute(currentProjectName: string): string {
  */
 export function getPreviousProjectRoute(currentProjectName: string): string {
   const currentIndex = projectOrder.indexOf(currentProjectName);
-  
+
   if (currentIndex === -1) {
     // Si no se encuentra el proyecto, volver a works
     return '/works';
   }
-  
+
   // Navegar circularmente: antes del primero, ir al último
   const prevIndex = currentIndex === 0 ? projectOrder.length - 1 : currentIndex - 1;
   const prevProjectName = projectOrder[prevIndex];
-  
+
   // Devolver la ruta del proyecto anterior
   return projectRoutes[prevProjectName] || '/works';
 }
