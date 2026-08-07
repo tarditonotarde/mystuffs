@@ -268,6 +268,18 @@ export default function MiGatoBolanoCase() {
           </div>
         </section>
 
+                                                                                        <div className="flex flex-col md:flex-row justify-end items-center gap-8 mt-8 mb-8">
+                                 
+                            
+                                        <ArrowButton
+                                          text="link project"
+                                            onClick={() => window.open('https://www.buscalibre.us/libro-mi-gato-bolano/9789569578113/p/55031667?srsltid=AfmBOopARJP7qEexMxYQAW8PO5TfZbiEIzfSMeLnp12j_gvyGqed_gO0', '_blank')}
+                                          direction="right"
+                                          svgPaths={svgPathsArrow}
+                                        />
+                                      </div>
+        
+
         {/* Divider */}
         <SectionDivider />
 

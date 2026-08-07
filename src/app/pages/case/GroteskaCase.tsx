@@ -308,21 +308,14 @@ export default function LynchUniverseCase() {
             Fast fashion has made online shopping increasingly predictable.
             Endless product grids, aggressive promotions and interchangeable
             branding have transformed many fashion websites into almost identical
-            experiences.
+            experiences. Groteska was born as a response to that.
 
-            <br />
-            <br />
-
-            Groteska was born as a response to that.
-
-            <br />
             <br />
 
             Rather than creating another clothing store, I wanted to build a
             digital brand where culture becomes the product and storytelling
             becomes part of the shopping experience.
 
-            <br />
             <br />
 
             Inspired by Mediterranean everyday life, local traditions and the
@@ -332,15 +325,22 @@ export default function LynchUniverseCase() {
             the beauty of imperfect places.
 
             <br />
-            <br />
-
-            The project combines branding, UX/UI design, creative direction,
-            front-end development and editorial storytelling into one cohesive
-            digital experience, proving that an independent fashion brand can
-            compete through identity rather than volume.
+        
           </p>
         </div>
       </div>
+
+                                                                                        <div className="flex flex-col md:flex-row justify-end items-center gap-8 mt-8 mb-8">
+           
+      
+                  <ArrowButton
+                    text="link project"
+                      onClick={() => window.open('https://groteska.es/', '_blank')}
+                    direction="right"
+                    svgPaths={svgPathsArrow}
+                  />
+                </div>
+      
 
       {/* Desktop */}
 

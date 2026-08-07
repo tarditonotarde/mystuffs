@@ -283,6 +283,18 @@ export default function LynchUniverseCase() {
                 </div>
               </div>
 
+                                                                                        <div className="flex flex-col md:flex-row justify-end items-center gap-8 mt-8 mb-8">
+                         
+                    
+                                <ArrowButton
+                                  text="link project"
+                                    onClick={() => window.open('https://tarditonotarde.github.io/LynchUniverse/', '_blank')}
+                                  direction="right"
+                                  svgPaths={svgPathsArrow}
+                                />
+                              </div>
+
+
               {/* TV Frame */}
               <div className={`w-[90%] mx-auto mt-8 ${visibleSections.has('hero') ? 'scroll-fade-in-up delay-400' : 'opacity-0'}`}>
                 <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
@@ -332,6 +344,8 @@ export default function LynchUniverseCase() {
                   </p>
                 </div>
               </div>
+
+              
 
               <div className={`space-y-8 ${visibleSections.has('overview') ? 'scroll-fade-in-right delay-300' : 'opacity-0'}`}>
                 <div>

@@ -292,8 +292,25 @@ export default function DgrCase() {
           >
             DGR Professional is a premium barber equipment brand focused on high-performance clippers, trimmers and shavers designed for professionals. The project transforms a traditional e-commerce website into a premium digital experience where storytelling, product design and engineering quality become central to the purchasing journey.
           </p>
+
+
         </div>
+
+
       </div>
+
+                                                                                        <div className="flex flex-col md:flex-row justify-end items-center gap-8 mt-8 mb-8">
+     
+
+            <ArrowButton
+              text="link project"
+                onClick={() => window.open('https://dgr-professional.com/', '_blank')}
+              direction="right"
+              svgPaths={svgPathsArrow}
+            />
+          </div>
+
+
 
       {/* Desktop */}
       <div
@@ -353,6 +370,7 @@ export default function DgrCase() {
           >
             The project combines UX strategy, visual storytelling and responsive design to create a scalable platform capable of supporting future product launches, distributors and brand growth while reinforcing DGR's premium positioning.
           </p>
+
 
         </div>
 

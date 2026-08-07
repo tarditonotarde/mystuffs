@@ -281,6 +281,19 @@ export default function ArcFestivalCase() {
               </div>
             </div>
           </div>
+
+                                                                                        <div className="flex flex-col md:flex-row justify-end items-center gap-8 mt-8 mb-8">
+     
+
+            <ArrowButton
+              text="link project"
+                onClick={() => window.open('https://www.festivalarc.com/', '_blank')}
+              direction="right"
+              svgPaths={svgPathsArrow}
+            />
+          </div>
+
+
         </section>
 
         {/* Divider */}
